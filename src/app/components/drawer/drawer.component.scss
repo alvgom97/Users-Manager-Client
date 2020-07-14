@@ -1,0 +1,78 @@
+@import '../../../theme.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 480px) {
+    font-size: 80%;
+  }
+  
+}
+
+.toolbar {
+
+  @media (max-width: 480px) {
+    //position: fixed;
+    // Make sure the toolbar will stay on top of the content as it scrolls past. 
+    //z-index: 2;
+    font-size: 80%;
+  }
+}
+h1.app-name {
+
+  margin-left: 1em;
+  @media (max-width: 480px) {
+      font-size: x-large;
+  }
+}
+
+.sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+
+  @media (max-width: 480px) {
+    //flex: 1 0 auto;
+    // When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the `<body>` to be our scrolling element for mobile layouts.
+  }
+}
+
+mat-sidenav {
+  background-color: $primary;
+  border-radius: 0 5px 5px 0;
+  height: fit-content;
+
+  mat-icon {
+      margin-right: 0.4em;
+  }
+}
+
+.mat-list-item {
+
+  @media (max-width: 480px) {
+    font-size: 80%;
+  }
+
+  &:hover {
+    background-color: lighten($primary, 5);
+  }
+}
+
+
+.toolbar button {
+  background-color: $primary;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+mat-sidenav-content {
+  padding: 0.5em;
+}
+
+mat-sidenav-container {
+  min-height: 60vh;
+}
