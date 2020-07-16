@@ -1,3 +1,29 @@
-<div>
-    <p>Users list</p>
-</div>
+<h2 id="title">Listado de Usuarios</h2>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let user of users" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{user.firstName}} {{user.lastName}}
+      </mat-panel-title>
+      <mat-panel-description *ngIf="user?.medicalBoardNumber">
+        Profesional
+      </mat-panel-description>
+      <mat-panel-description *ngIf="!user?.medicalBoardNumber">
+        Paciente
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-list-item>
+        <div routerLink='{{user?.id}}' class="option"><mat-icon>search</mat-icon>&nbsp;&nbsp;Detalles</div>
+    </mat-list-item>
+    <mat-list-item>
+        <div routerLink='{{user?.id}}/edit' class="option"><mat-icon>edit</mat-icon>&nbsp;&nbsp;Editar</div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="option"><mat-icon>delete_forever</mat-icon>&nbsp;&nbsp;Eliminar</div>
+    </mat-list-item>
+    
+  </mat-expansion-panel>
+</mat-accordion>

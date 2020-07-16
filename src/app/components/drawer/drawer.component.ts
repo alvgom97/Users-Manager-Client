@@ -1,6 +1,6 @@
 import { Component, OnDestroy, ChangeDetectorRef, Inject } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-drawer',
@@ -11,8 +11,8 @@ export class DrawerComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   fillerNav = [
-    {name:"Users List", route:"users", icon:"format_list_bulleted"}, 
-    {name:"New User", route:"users/new", icon:"add_circle_outline"}
+    {name:"Listado Usuarios", route:"users", icon:"format_list_bulleted"}, 
+    {name:"Nuevo Usuario", route:"users/new", icon:"add_circle_outline"}
   ];
 
   private _mobileQueryListener: () => void;

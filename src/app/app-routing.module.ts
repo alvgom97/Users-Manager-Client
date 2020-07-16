@@ -10,7 +10,7 @@ import { Error404Component } from './containers/error404/error404.component';
 const routes: Routes = [
   { path: '', redirectTo: "users", pathMatch: "full" },
   { path: 'users', component: UsersListComponent },
-  { path: 'users/new', component: UsersCreateComponent },
+  { path: 'users/new', component: UsersCreateComponent, pathMatch: "full" },
   { path: 'users/:id', component: UsersDetailsComponent },
   { path: 'users/:id/edit', component: UsersEditComponent },
   { path: '**', component: Error404Component }

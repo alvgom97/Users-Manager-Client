@@ -1,3 +1,55 @@
-<div>
-    <p>User details</p>
-</div>
+<h2 id="title">Detalles del Usuario</h2>
+
+<mat-list *ngIf="user">
+  <mat-accordion>
+    
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Datos Personales:
+        </mat-panel-title>
+        <mat-panel-description>
+          {{user?.firstName}} {{user?.lastName}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list-item *ngIf="user.secondLastName">Segundo Apellido: {{user?.secondLastName}}</mat-list-item>
+      <mat-list-item>Género: {{user?.gender}}</mat-list-item>
+      <mat-list-item *ngIf="user.birthdate">Fecha de Nacimiento: {{user?.birthdate}}</mat-list-item>
+      <mat-list-item *ngIf="user.identityNumber">Número de Identidad: {{user?.identityNumber}}</mat-list-item>
+      <mat-list-item *ngIf="user.medicalBoardNumber">Número de Colegiado: {{user?.medicalBoardNumber}}</mat-list-item>
+      <mat-list-item *ngIf="user.NHC">Número de Historia Clínica: {{user?.NHC}}</mat-list-item>
+      <mat-list-item *ngIf="user.professionalType">Tipo de Profesional: {{user?.professionalType}}</mat-list-item>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Dirección:
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list-item>Calle: {{user?.address.street}}</mat-list-item>
+      <mat-list-item>Numero: {{user?.address.number}}</mat-list-item>
+      <mat-list-item>Piso: {{user?.address.door}}</mat-list-item>
+      <mat-list-item>Ciudad: {{user?.address.city}}</mat-list-item>
+      <mat-list-item>Código Postal: {{user?.address.postalCode}}</mat-list-item>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Aseguradoras:
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-expansion-panel *ngFor="let i of user?.issuranceList" (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{i?.name}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list-item>Número de Tarjeta: {{i?.cardNumber}}</mat-list-item>
+        <mat-list-item>Tipo: {{i?.type}}</mat-list-item>
+      </mat-expansion-panel>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-list>

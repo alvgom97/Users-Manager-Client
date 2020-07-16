@@ -1,3 +1,201 @@
-<div>
-    <p>Create New User</p>
-</div>
+<h2 id="title">Nuevo Usuario</h2>
+
+<mat-tab-group>
+  <mat-accordion multi>
+    <mat-tab label="Paciente">
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Datos Personales:
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre:</mat-label>
+          <input matInput placeholder="Álvaro" [formControl]="firstName" required />
+          <mat-error *ngIf="firstName.invalid">{{getErrorMessage(firstName)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Primer apellido:</mat-label>
+          <input matInput placeholder="Gómez" [formControl]="lastName" required />
+          <mat-error *ngIf="lastName.invalid">{{getErrorMessage(lastName)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Segundo apellido:</mat-label>
+          <input matInput placeholder="Martín" [formControl]="secondLastName" />
+          <mat-error *ngIf="secondLastName.invalid">{{getErrorMessage(secondLastName)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Género:</mat-label>
+          <mat-select [(ngModel)]="selectedValue" name="gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de Nacimiento:</mat-label>
+          <input matInput [matDatepicker]="picker" />
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Número de Identificación:</mat-label>
+          <input matInput placeholder="12345678Z" [formControl]="identityNumber" />
+          <mat-error *ngIf="identityNumber.invalid">{{getErrorMessage(identityNumber)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Número de Historial Clínico:</mat-label>
+          <input matInput placeholder="9876543210" [formControl]="nhc" />
+          <mat-error *ngIf="nhc.invalid">{{getErrorMessage(nhc)}}</mat-error>
+        </mat-form-field>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Dirección:
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Calle:</mat-label>
+          <input matInput placeholder="Calle Mayor" [formControl]="street" required />
+          <mat-error *ngIf="street.invalid">{{getErrorMessage(street)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Número:</mat-label>
+          <input matInput placeholder="14" [formControl]="number" required />
+          <mat-error *ngIf="number.invalid">{{getErrorMessage(number)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Puerta:</mat-label>
+          <input matInput placeholder="4ºD" [formControl]="door" required />
+          <mat-error *ngIf="door.invalid">{{getErrorMessage(door)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Código Postal:</mat-label>
+          <input matInput placeholder="28922" [formControl]="postalCode" required />
+          <mat-error *ngIf="postalCode.invalid">{{getErrorMessage(postalCode)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Ciudad:</mat-label>
+          <input matInput placeholder="Alcorcón" [formControl]="city" required />
+          <mat-error *ngIf="city.invalid">{{getErrorMessage(city)}}</mat-error>
+        </mat-form-field>
+
+      </mat-expansion-panel>
+    </mat-tab>
+    <mat-tab label="Profesional">
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Datos Personales:
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre:</mat-label>
+          <input matInput placeholder="Álvaro" [formControl]="firstName" required>
+          <mat-error *ngIf="firstName.invalid">{{getErrorMessage(firstName)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Primer apellido:</mat-label>
+          <input matInput placeholder="Gómez" [formControl]="lastName" required>
+          <mat-error *ngIf="lastName.invalid">{{getErrorMessage(lastName)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Segundo apellido:</mat-label>
+          <input matInput placeholder="Martín" [formControl]="secondLastName">
+          <mat-error *ngIf="secondLastName.invalid">{{getErrorMessage(secondLastName)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Género:</mat-label>
+          <mat-select [(ngModel)]="selectedValue" name="gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de Nacimiento:</mat-label>
+          <input matInput [matDatepicker]="picker2">
+          <mat-datepicker-toggle matSuffix [for]="picker2">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Número de Identificación:</mat-label>
+          <input matInput placeholder="12345678Z" [formControl]="identityNumber">
+          <mat-error *ngIf="identityNumber.invalid">{{getErrorMessage(identityNumber)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Número de Colegiado:</mat-label>
+          <input matInput placeholder="9876543210" [formControl]="medicalBoardNumber">
+          <mat-error *ngIf="medicalBoardNumber.invalid">{{getErrorMessage(medicalBoardNumber)}}</mat-error>
+        </mat-form-field>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Dirección:
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Calle:</mat-label>
+          <input matInput placeholder="Calle Mayor" [formControl]="street" required />
+          <mat-error *ngIf="street.invalid">{{getErrorMessage(street)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Número:</mat-label>
+          <input matInput placeholder="14" [formControl]="number" required />
+          <mat-error *ngIf="number.invalid">{{getErrorMessage(number)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Puerta:</mat-label>
+          <input matInput placeholder="4ºD" [formControl]="door" required />
+          <mat-error *ngIf="door.invalid">{{getErrorMessage(door)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Código Postal:</mat-label>
+          <input matInput placeholder="28922" [formControl]="postalCode" required />
+          <mat-error *ngIf="postalCode.invalid">{{getErrorMessage(postalCode)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Ciudad:</mat-label>
+          <input matInput placeholder="Alcorcón" [formControl]="city" required />
+          <mat-error *ngIf="city.invalid">{{getErrorMessage(city)}}</mat-error>
+        </mat-form-field>
+
+      </mat-expansion-panel>
+    </mat-tab>
+  </mat-accordion>
+</mat-tab-group>

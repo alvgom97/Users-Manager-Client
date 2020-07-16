@@ -1,0 +1,40 @@
+mat-expansion-panel {
+    width: 60%;
+
+    @media (max-width: "480px") {
+        width: 90%;
+    }
+}
+
+mat-expansion-panel mat-expansion-panel {
+    width: 80%;
+}
+
+.option {
+    //width: fit-content;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.2em;
+    cursor: pointer;
+    padding: 0.5em;
+
+    &:hover {
+        background-color: lighten($color: #000000, $amount: 30)
+    }
+
+    @media (max-width: "480px") {
+        font-size: 80%;
+    }
+}
+
+.mat-expansion-panel-header-title {
+
+    @media (max-width: "480px") {
+        font-size: 80%;
+    }
+    
+}
+
+#title {
+    margin-left: 0.5em;
+}

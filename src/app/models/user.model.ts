@@ -1,9 +1,9 @@
 type professional = 'Médico'
     | 'Enfermero'
     | 'Administrativo';
-type issurance = 'salud'
-    | 'familiar'
-    | 'dental';
+type issurance = 'Salud'
+    | 'Familiar'
+    | 'Dental';
 interface Issurance {
     cardNumber: number;
     name: string;
@@ -19,7 +19,7 @@ interface Address {
 }
 
 export interface User {
-    _id: string;
+    id: string;
     NHC?: string;
     medicalBoardNumber?: string;
     firstName: string;
