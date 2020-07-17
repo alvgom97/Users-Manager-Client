@@ -1,8 +1,19 @@
 .mat-tab-labels {
   
+  display: flex;
   justify-content: space-evenly;
 }
 
 #title {
   margin-left: 0.5em;
+}
+
+#submit {
+  display: flex;
+  justify-content: flex-end;
+ 
+  button {
+  margin: 0.5em;
+  
+  }
 }

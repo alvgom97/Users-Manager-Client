@@ -4,8 +4,8 @@ type professional = 'Médico'
 type issurance = 'Salud'
     | 'Familiar'
     | 'Dental';
-interface Issurance {
-    cardNumber: number;
+export interface Issurance {
+    cardNumber: string;
     name: string;
     type: issurance;
 
