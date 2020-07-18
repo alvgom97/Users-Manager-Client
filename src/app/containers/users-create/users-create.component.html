@@ -34,18 +34,15 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Género:</mat-label>
-            <mat-select name="gender">
+            <mat-select name="gender" formControlName="gender">
               <mat-option *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Fecha de Nacimiento:</mat-label>
-            <input matInput [matDatepicker]="picker" />
-            <mat-datepicker-toggle matSuffix [for]="picker">
-              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <input matInput placeholder="04/05/1997" [formControl]="birthdate" required />
+            <mat-error *ngIf="birthdate.invalid">{{getErrorMessage(birthdate)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
@@ -59,6 +56,11 @@
             <input matInput placeholder="9876543210" [formControl]="nhc" required />
             <mat-error *ngIf="nhc.invalid">{{getErrorMessage(nhc)}}</mat-error>
           </mat-form-field>
+
+          <mat-form-field class="hidden">
+            <input matInput name="userType" [formControl]="userType"/>
+          </mat-form-field>
+          
 
         </mat-expansion-panel>
 
@@ -112,19 +114,19 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Num de Tarjeta:</mat-label>
-            <input matInput placeholder="1234567890" [formControl]="issuranceCardNumber" required />
+            <input matInput placeholder="1234567890" [formControl]="issuranceCardNumber" />
             <mat-error *ngIf="issuranceCardNumber.invalid">{{getErrorMessage(issuranceCardNumber)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Nombre:</mat-label>
-            <input matInput placeholder="Mapfre" [formControl]="issuranceName" required />
+            <input matInput placeholder="Mapfre" [formControl]="issuranceName" />
             <mat-error *ngIf="issuranceName.invalid">{{getErrorMessage(issuranceName)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Tipo:</mat-label>
-            <mat-select name="issurance" [formControl]="issuranceType" required>
+            <mat-select name="issurance" [formControl]="issuranceType" >
               <mat-option *ngFor="let issurance of issuranceList" [value]="issurance">
                 {{issurance}}
               </mat-option>
@@ -136,7 +138,8 @@
         </mat-expansion-panel>
 
         <div id="submit">
-          <button mat-fab type="submit" color="primary" [disabled]="!profileForm.valid"><mat-icon>send</mat-icon></button>
+          <button mat-fab type="submit" color="primary" ><mat-icon>send</mat-icon></button>
+          <!-- [disabled]="!profileForm.valid" -->
         </div>
         
 
@@ -174,14 +177,14 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Género:</mat-label>
-            <mat-select  name="gender">
+            <mat-select  name="gender" formControlName="genderPro">
               <mat-option *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Fecha de Nacimiento:</mat-label>
-            <input matInput [matDatepicker]="picker2">
+            <input matInput [matDatepicker]="picker2" formControlName="birthdatePro">
             <mat-datepicker-toggle matSuffix [for]="picker2">
               <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
             </mat-datepicker-toggle>
@@ -202,11 +205,15 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Tipo de Profesional:</mat-label>
-            <mat-select name="issurance">
-              <mat-option *ngFor="let prof of professionalType" [value]="prof">
+            <mat-select name="professionalType" formControlName="professionalType" >
+              <mat-option *ngFor="let prof of professionalTypeList" [value]="prof">
                 {{prof}}
               </mat-option>
             </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="hidden">
+            <input matInput name="userTypePro" [formControl]="userTypePro"/>
           </mat-form-field>
 
         </mat-expansion-panel>
@@ -252,7 +259,8 @@
         </mat-expansion-panel>
 
         <div id="submit">
-          <button mat-fab type="submit" color="primary" [disabled]="!profileFormProf.valid"><mat-icon>send</mat-icon></button>
+          <button mat-fab type="submit" color="primary" ><mat-icon>send</mat-icon></button>
+          <!-- [disabled]="!profileFormProf.valid" -->
         </div>
 
       </form>

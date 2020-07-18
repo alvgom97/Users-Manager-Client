@@ -30,3 +30,14 @@ mat-panel-title {
 #title {
     margin-left: 0.5em;
 }
+
+#options {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    margin-top: 2em;
+
+    @media (max-width: "480px") {
+        width: 90%;
+    }
+}

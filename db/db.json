@@ -6,6 +6,7 @@
             "lastName": "Gomez",
             "gender": "Hombre",
             "birthdate": "04/05/1997",
+            "nhc": "0123456769",
             "address":
                 { "street": "Calle Ciudad Real",
                     "number": "1",
@@ -31,28 +32,16 @@
             "firstName": "Jorge",
             "lastName": "Martin",
             "secondLastName": "García",
-            "gender": "Hombre",
+            "gender": "No Binario",
             "birthdate": "28/10/1995",
             "medicalBoardNumber": "69",
             "address":
                 { "street": "Calle San Fermín",
-                    "number": "2 A",
+                    "number": "2",
                     "door": "2ªB",
                     "postalCode": "29576",
                     "city": "Orcasitas"
-                },
-            "issuranceList": [
-                {
-                    "cardNumber": "02072020",
-                    "name": "Asegurator",
-                    "type": "Salud"
-                },
-                {
-                    "cardNumber": "364796969",
-                    "name": "Aseguradoring",
-                    "type": "Familiar"
                 }
-            ]
         }
     ]
 }

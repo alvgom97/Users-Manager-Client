@@ -17,7 +17,7 @@
       <mat-list-item *ngIf="user.birthdate">Fecha de Nacimiento: {{user?.birthdate}}</mat-list-item>
       <mat-list-item *ngIf="user.identityNumber">Número de Identidad: {{user?.identityNumber}}</mat-list-item>
       <mat-list-item *ngIf="user.medicalBoardNumber">Número de Colegiado: {{user?.medicalBoardNumber}}</mat-list-item>
-      <mat-list-item *ngIf="user.NHC">Número de Historia Clínica: {{user?.NHC}}</mat-list-item>
+      <mat-list-item *ngIf="user.nhc">Número de Historia Clínica: {{user?.nhc}}</mat-list-item>
       <mat-list-item *ngIf="user.professionalType">Tipo de Profesional: {{user?.professionalType}}</mat-list-item>
     </mat-expansion-panel>
 
@@ -34,7 +34,7 @@
       <mat-list-item>Código Postal: {{user?.address.postalCode}}</mat-list-item>
     </mat-expansion-panel>
 
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" > 
       <mat-expansion-panel-header>
         <mat-panel-title>
           Aseguradoras:
@@ -52,4 +52,10 @@
       </mat-expansion-panel>
     </mat-expansion-panel>
   </mat-accordion>
+  
+  <div id="options">
+    <button mat-fab color="primary" routerLink='edit' ><mat-icon>edit</mat-icon></button>
+    <button mat-fab color="primary" ><mat-icon>delete_forever</mat-icon></button>
+  </div>
+
 </mat-list>

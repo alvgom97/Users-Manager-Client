@@ -4,10 +4,12 @@ type professional = 'Médico'
 type issurance = 'Salud'
     | 'Familiar'
     | 'Dental';
+type userType = 'Paciente' | 'Profesional';
+
 export interface Issurance {
-    cardNumber: string;
-    name: string;
-    type: issurance;
+    cardNumber?: string;
+    name?: string;
+    type?: issurance;
 
 }
 interface Address {
@@ -20,7 +22,7 @@ interface Address {
 
 export interface User {
     id: string;
-    NHC?: string;
+    nhc?: string;
     medicalBoardNumber?: string;
     firstName: string;
     lastName: string;
@@ -31,4 +33,5 @@ export interface User {
     address: Address;
     professionalType?: professional;
     issuranceList?: Issurance[];
+    userType: userType;
 }
