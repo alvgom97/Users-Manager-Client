@@ -102,6 +102,18 @@
                         Aseguradoras:
                     </mat-panel-title>
                 </mat-expansion-panel-header>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Seleccione:</mat-label>
+                    <mat-select name="issurance" [formControl]="issuranceList" multiple>
+                        <mat-option *ngFor="let issurance of issurances" [value]="issurance">
+                            {{issurance?.name}} ({{issurance?.type}})
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <h4>Actuales:</h4>
                 <mat-expansion-panel *ngFor="let i of user?.issuranceList" (opened)="panelOpenState = true"
                     (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
@@ -112,20 +124,27 @@
                     <mat-list-item>Número de Tarjeta: {{i?.cardNumber}}</mat-list-item>
                     <mat-list-item>Tipo: {{i?.type}}</mat-list-item>
                 </mat-expansion-panel>
+
             </mat-expansion-panel>
         </mat-accordion>
 
         <div id="options">
-            <button mat-fab color="primary" routerLink='/users'><mat-icon>keyboard_arrow_left</mat-icon></button>
-            <button mat-fab color="primary" (click)=deleteUser(user?.id)><mat-icon>delete_forever</mat-icon></button>
-            <button mat-fab type="submit" color="primary" [disabled]="!profileForm.valid"><mat-icon>send</mat-icon></button>
-          </div>
+            <button mat-fab color="primary" routerLink='/users'>
+                <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <button mat-fab color="primary" (click)=deleteUser(user?.id)>
+                <mat-icon>delete_forever</mat-icon>
+            </button>
+            <button mat-fab type="submit" color="primary" [disabled]="!profileForm.valid">
+                <mat-icon>send</mat-icon>
+            </button>
+        </div>
 
     </form>
 </div>
 
 <div *ngIf="user?.medicalBoardNumber">
-    <form [formGroup]="profileFormPro" (ngSubmit)="onSubmitPro()">
+    <form [formGroup]="profileFormProf" (ngSubmit)="onSubmitProf()">
         <mat-accordion>
 
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -182,12 +201,12 @@
 
                 <mat-form-field appearance="legacy">
                     <mat-label>Tipo de Profesional:</mat-label>
-                    <mat-select name="professionalType" formControlName="professionalType" >
-                      <mat-option *ngFor="let prof of professionalTypeList" [value]="prof">
-                        {{prof}}
-                      </mat-option>
+                    <mat-select name="professionalType" formControlName="professionalType">
+                        <mat-option *ngFor="let prof of professionalTypeList" [value]="prof">
+                            {{prof}}
+                        </mat-option>
                     </mat-select>
-                  </mat-form-field>
+                </mat-form-field>
 
             </mat-expansion-panel>
 
@@ -231,10 +250,16 @@
         </mat-accordion>
 
         <div id="options">
-            <button mat-fab color="primary" routerLink='/users/{{user.id}}' ><mat-icon>keyboard_arrow_left</mat-icon></button>
-            <button mat-fab color="primary" (click)=openDialog(user?.id)><mat-icon>delete_forever</mat-icon></button>
-            <button mat-fab type="submit" color="primary" [disabled]="!profileFormPro.valid"><mat-icon>send</mat-icon></button>
-          </div>
+            <button mat-fab color="primary" routerLink='/users/{{user.id}}'>
+                <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <button mat-fab color="primary" (click)=openDialog(user?.id)>
+                <mat-icon>delete_forever</mat-icon>
+            </button>
+            <button mat-fab type="submit" color="primary" [disabled]="!profileFormProf.valid">
+                <mat-icon>send</mat-icon>
+            </button>
+        </div>
 
     </form>
-</div> 
+</div>

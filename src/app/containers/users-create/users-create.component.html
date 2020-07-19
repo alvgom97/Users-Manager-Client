@@ -103,38 +103,24 @@
 
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Aseguradora:
+              Aseguradoras:
             </mat-panel-title>
           </mat-expansion-panel-header>
 
           <mat-form-field appearance="fill">
-            <mat-label>Num de Tarjeta:</mat-label>
-            <input matInput placeholder="1234567890" [formControl]="issuranceCardNumber" />
-            <mat-error *ngIf="issuranceCardNumber.invalid">{{getErrorMessage(issuranceCardNumber)}}</mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Nombre:</mat-label>
-            <input matInput placeholder="Mapfre" [formControl]="issuranceName" />
-            <mat-error *ngIf="issuranceName.invalid">{{getErrorMessage(issuranceName)}}</mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Tipo:</mat-label>
-            <mat-select name="issurance" [formControl]="issuranceType" >
-              <mat-option *ngFor="let issurance of issuranceList" [value]="issurance">
-                {{issurance}}
+            <mat-label>Seleccione:</mat-label>
+            <mat-select name="issurance" [formControl]="issuranceList" multiple>
+              <mat-option *ngFor="let issurance of issurances" [value]="issurance">
+                {{issurance?.name}} ({{issurance?.type}})
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="issuranceName.invalid">{{getErrorMessage(issuranceName)}}</mat-error>
           </mat-form-field>
 
 
         </mat-expansion-panel>
 
         <div id="submit">
-          <button mat-fab type="submit" color="primary" ><mat-icon>send</mat-icon></button>
-          <!-- [disabled]="!profileForm.valid" -->
+          <button mat-fab type="submit" color="primary" [disabled]="!profileForm.valid"><mat-icon>send</mat-icon></button>
         </div>
         
 
@@ -154,42 +140,39 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Nombre:</mat-label>
-            <input matInput placeholder="Álvaro" [formControl]="firstNamePro" required>
-            <mat-error *ngIf="firstNamePro.invalid">{{getErrorMessage(firstNamePro)}}</mat-error>
+            <input matInput placeholder="Álvaro" [formControl]="firstNameProf" required>
+            <mat-error *ngIf="firstNameProf.invalid">{{getErrorMessage(firstNameProf)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Primer apellido:</mat-label>
-            <input matInput placeholder="Gómez" [formControl]="lastNamePro" required>
-            <mat-error *ngIf="lastNamePro.invalid">{{getErrorMessage(lastNamePro)}}</mat-error>
+            <input matInput placeholder="Gómez" [formControl]="lastNameProf" required>
+            <mat-error *ngIf="lastNameProf.invalid">{{getErrorMessage(lastNameProf)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Segundo apellido:</mat-label>
-            <input matInput placeholder="Martín" [formControl]="secondLastNamePro">
-            <mat-error *ngIf="secondLastNamePro.invalid">{{getErrorMessage(secondLastNamePro)}}</mat-error>
+            <input matInput placeholder="Martín" [formControl]="secondLastNameProf">
+            <mat-error *ngIf="secondLastNameProf.invalid">{{getErrorMessage(secondLastNameProf)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Género:</mat-label>
-            <mat-select  name="gender" formControlName="genderPro">
+            <mat-select  name="gender" formControlName="genderProf">
               <mat-option *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Fecha de Nacimiento:</mat-label>
-            <input matInput [matDatepicker]="picker2" formControlName="birthdatePro">
-            <mat-datepicker-toggle matSuffix [for]="picker2">
-              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
+            <input matInput placeholder="04/05/1997" [formControl]="birthdateProf" required />
+            <mat-error *ngIf="birthdateProf.invalid">{{getErrorMessage(birthdateProf)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Num de Identificación:</mat-label>
-            <input matInput placeholder="12345678Z" [formControl]="identityNumberPro">
-            <mat-error *ngIf="identityNumberPro.invalid">{{getErrorMessage(identityNumberPro)}}</mat-error>
+            <input matInput placeholder="12345678Z" [formControl]="identityNumberProf">
+            <mat-error *ngIf="identityNumberProf.invalid">{{getErrorMessage(identityNumberProf)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
@@ -200,7 +183,7 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Tipo de Profesional:</mat-label>
-            <mat-select name="professionalType" formControlName="professionalType" >
+            <mat-select name="professionalType" [formControl]="professionalType" >
               <mat-option *ngFor="let prof of professionalTypeList" [value]="prof">
                 {{prof}}
               </mat-option>
@@ -219,39 +202,38 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Calle:</mat-label>
-            <input matInput placeholder="Calle Mayor" [formControl]="streetPro" required />
-            <mat-error *ngIf="streetPro.invalid">{{getErrorMessage(streetPro)}}</mat-error>
+            <input matInput placeholder="Calle Mayor" [formControl]="streetProf" required />
+            <mat-error *ngIf="streetProf.invalid">{{getErrorMessage(streetProf)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Número:</mat-label>
-            <input matInput placeholder="14" [formControl]="numberPro" required />
-            <mat-error *ngIf="numberPro.invalid">{{getErrorMessage(numberPro)}}</mat-error>
+            <input matInput placeholder="14" [formControl]="numberProf" required />
+            <mat-error *ngIf="numberProf.invalid">{{getErrorMessage(numberProf)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Puerta:</mat-label>
-            <input matInput placeholder="4ºD" [formControl]="doorPro" required />
-            <mat-error *ngIf="doorPro.invalid">{{getErrorMessage(doorPro)}}</mat-error>
+            <input matInput placeholder="4ºD" [formControl]="doorProf" required />
+            <mat-error *ngIf="doorProf.invalid">{{getErrorMessage(doorProf)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Código Postal:</mat-label>
-            <input matInput placeholder="28922" [formControl]="postalCodePro" required />
-            <mat-error *ngIf="postalCodePro.invalid">{{getErrorMessage(postalCodePro)}}</mat-error>
+            <input matInput placeholder="28922" [formControl]="postalCodeProf" required />
+            <mat-error *ngIf="postalCodeProf.invalid">{{getErrorMessage(postalCodeProf)}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Ciudad:</mat-label>
-            <input matInput placeholder="Alcorcón" [formControl]="cityPro" required />
-            <mat-error *ngIf="cityPro.invalid">{{getErrorMessage(cityPro)}}</mat-error>
+            <input matInput placeholder="Alcorcón" [formControl]="cityProf" required />
+            <mat-error *ngIf="cityProf.invalid">{{getErrorMessage(cityProf)}}</mat-error>
           </mat-form-field>
 
         </mat-expansion-panel>
 
         <div id="submit">
-          <button mat-fab type="submit" color="primary" ><mat-icon>send</mat-icon></button>
-          <!-- [disabled]="!profileFormProf.valid" -->
+          <button mat-fab type="submit" color="primary" [disabled]="!profileFormProf.valid"><mat-icon>send</mat-icon></button>
         </div>
 
       </form>

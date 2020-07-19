@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { Issurance } from 'src/app/models/user.model';
+import { UsersService } from 'src/app/services/users.service';
+import { Router } from '@angular/router';
+import { User, Address } from "src/app/models/user.model";
 
 @Component({
   selector: 'app-users-create',
@@ -10,16 +12,19 @@ import { Issurance } from 'src/app/models/user.model';
 })
 export class UsersCreateComponent implements OnInit {
 
-
-  constructor() { }
+  constructor(private usersService: UsersService, private router: Router) { }
   panelOpenState: boolean;
   selectedValue: string;
 
   genders: string[] = ["Mujer", "Hombre", "No Binario"];
-  issuranceList: String[] = ['Salud', 'Familiar', 'Dental'];
   professionalTypeList: String[] = ['Médico', 'Enfermero', 'Administrativo']; 
+  issurances: Issurance[];
 
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+
+    this.usersService.getIssurances().subscribe(issurances => this.issurances = issurances); 
+  }
 
   firstName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
   lastName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
@@ -29,32 +34,28 @@ export class UsersCreateComponent implements OnInit {
   medicalBoardNumber = new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]);
   birthdate = new FormControl('', [Validators.pattern(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/)]);
   gender = new FormControl();
-  userType = new FormControl("Paciente");
 
   street = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
   number = new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]);
-  door = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
+  door = new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]);
   postalCode = new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]);
   city = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
 
-  firstNamePro = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-  lastNamePro = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-  secondLastNamePro = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)]);
-  identityNumberPro = new FormControl('', [Validators.pattern(/^\d{8}[a-zA-Z]$/)]);
-  birthdatePro = new FormControl('', [Validators.pattern(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/)]);
-  genderPro = new FormControl();
-  userTypePro = new FormControl("Profesional");
+  firstNameProf = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
+  lastNameProf = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
+  secondLastNameProf = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)]);
+  identityNumberProf = new FormControl('', [Validators.pattern(/^\d{8}[a-zA-Z]$/)]);
+  birthdateProf = new FormControl('', [Validators.pattern(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/)]);
+  genderProf = new FormControl();
 
-  streetPro = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-  numberPro = new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]);
-  doorPro = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-  postalCodePro = new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]);
-  cityPro = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
+  streetProf = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
+  numberProf = new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]);
+  doorProf = new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]);
+  postalCodeProf = new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]);
+  cityProf = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
   professionalType = new FormControl();
 
-  issuranceCardNumber = new FormControl('', [Validators.pattern(/^\d{10}$/)]);
-  issuranceName = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)]);
-  issuranceType = new FormControl();
+  issuranceList = new FormControl();
 
   profileForm = new FormGroup({
 
@@ -65,7 +66,6 @@ export class UsersCreateComponent implements OnInit {
     gender: this.gender,
     birthdate: this.birthdate,
     nhc: this.nhc,
-    userType: this.userType,
 
     street: this.street,
     number: this.number,
@@ -73,29 +73,25 @@ export class UsersCreateComponent implements OnInit {
     postalCode: this.postalCode,
     city: this.city,
 
-    issuranceCardNumber: this.issuranceCardNumber,
-    issuranceName: this.issuranceName,
-    issuranceType: this.issuranceType
-
+    issuranceList: this.issuranceList
   });
 
   profileFormProf = new FormGroup({
 
-    firstNamePro: this.firstNamePro,
-    lastNamePro: this.lastNamePro,
-    secondLastNamePro: this.secondLastNamePro,
-    identityNumberPro: this.identityNumberPro,
+    firstNameProf: this.firstNameProf,
+    lastNameProf: this.lastNameProf,
+    secondLastNameProf: this.secondLastNameProf,
+    identityNumberProf: this.identityNumberProf,
     medicalBoardNumber: this.medicalBoardNumber,
-    genderPro: this.genderPro,
-    birthdatePro: this.birthdatePro,
+    genderProf: this.genderProf,
+    birthdateProf: this.birthdateProf,
     professionalType: this.professionalType,
-    userTypePro: this.userTypePro,
 
-    streetPro: this.streetPro,
-    numberPro: this.numberPro,
-    doorPro: this.doorPro,
-    postalCodePro: this.postalCodePro,
-    cityPro: this.cityPro
+    streetProf: this.streetProf,
+    numberProf: this.numberProf,
+    doorProf: this.doorProf,
+    postalCodeProf: this.postalCodeProf,
+    cityProf: this.cityProf
 
   });
 
@@ -121,13 +117,54 @@ export class UsersCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.profileForm.value);
+    
+    let address: Address = {
+      street: this.profileForm.value.street,
+      number: this.profileForm.value.number,
+      door: this.profileForm.value.door,
+      postalCode: this.profileForm.value.postalCode,
+      city: this.profileForm.value.city,
+    };
+
+    let user: User = {
+      nhc: this.profileForm.value.nhc,
+      firstName: this.profileForm.value.firstName,
+      lastName: this.profileForm.value.lastName,
+      secondLastName: this.profileForm.value.secondLastName,
+      gender: this.profileForm.value.gender,
+      birthdate: this.profileForm.value.birthdate,
+      identityNumber: this.profileForm.value.identityNumber,
+      address: address,
+      issuranceList: this.profileForm.value.issuranceList
+    };
+
+    this.usersService.createUser(user).subscribe(() => this.router.navigate(['users']));
+  
   }
 
   onSubmitProf() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.profileFormProf.value);
+
+    let address: Address = {
+      street: this.profileFormProf.value.streetProf,
+      number: this.profileFormProf.value.numberProf,
+      door: this.profileFormProf.value.doorProf,
+      postalCode: this.profileFormProf.value.postalCodeProf,
+      city: this.profileFormProf.value.cityProf,
+    };
+
+    let user: User = {
+      medicalBoardNumber: this.profileFormProf.value.medicalBoardNumber,
+      firstName: this.profileFormProf.value.firstNameProf,
+      lastName: this.profileFormProf.value.lastNameProf,
+      secondLastName: this.profileFormProf.value.secondLastNameProf,
+      gender: this.profileFormProf.value.genderProf,
+      birthdate: this.profileFormProf.value.birthdateProf,
+      identityNumber: this.profileFormProf.value.identityNumberProf,
+      address: address,
+      professionalType: this.profileFormProf.value.professionalType
+    };
+
+    this.usersService.createUser(user).subscribe(() => this.router.navigate(['users']));
   }
 
 }

@@ -1,6 +1,9 @@
 import { Component, OnDestroy, ChangeDetectorRef, Inject } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
+import { User } from 'src/app/models/user.model';
+import { UsersService } from 'src/app/services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drawer',
@@ -33,10 +36,33 @@ export class DrawerComponent implements OnDestroy {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
+  
 }
 
 @Component({
   selector: 'confirmation-dialog',
   templateUrl: 'confirmation.html',
 })
-export class DrawerDialogComponent {}
+export class DrawerDialogComponent {
+
+  constructor(private usersService: UsersService, private router: Router){}
+  users: User[];
+  doctors: User[];
+
+  deleteDoctors(){
+
+    this.usersService.getUsers().subscribe(users => {
+      
+      users.filter(u => {
+        return u.professionalType === "Médico";
+      }).forEach(d => {
+
+        this.usersService.getUsers().subscribe(users => this.doctors = users);
+        return this.usersService.deleteUser(d.id).subscribe(() => {
+            this.router.navigate(['users']);
+            window.location.reload();
+          });
+        },);
+    });
+  }
+}

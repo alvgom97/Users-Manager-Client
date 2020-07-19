@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { User } from "src/app/models/user.model";
+import { User, Issurance } from "src/app/models/user.model";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,34 +10,30 @@ import { Observable } from 'rxjs';
 export class UsersService {
 
   API_BASE_URL = "http://localhost:3000";
-  private users: User[];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.API_BASE_URL + '/users/');
   };
 
-  getUser(id: number): Observable<User> {
+  getUser(id: string): Observable<User> {
     return this.httpClient.get<User>(this.API_BASE_URL + '/users/' + id);
   }
 
-  deleteUser(id: number){
-    console.log("User " + id + " deleted")
+  getIssurances(): Observable<Issurance[]> {
+    return this.httpClient.get<Issurance[]>(this.API_BASE_URL + '/issurances/');
+  };
+
+  deleteUser(id: string): Observable<object> {
     return this.httpClient.delete<object>(this.API_BASE_URL + '/users/' + id);
-    
   }
 
-  updateUser(id: number){
-    // return this.httpClient.put<Post>(this.API_URL + 'posts/' + post.id, post);
+  updateUser(user: User) {
+    return this.httpClient.put<User>(this.API_BASE_URL + '/users/' + user.id, user);
   }
 
-  createUser(){
-    // return this.httpClient.post<Post>(this.API_URL + 'posts', post);
+  createUser(user: User): Observable<User> {
+    return this.httpClient.post<User>(this.API_BASE_URL + '/users/', user);
   }
-
-  deleteDoctors(){
-
-  }
-
 }

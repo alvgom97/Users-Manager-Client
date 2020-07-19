@@ -11,7 +11,7 @@ export interface Issurance {
     type?: issurance;
 
 }
-interface Address {
+export interface Address {
     street: string;
     number: string;
     door: string;
@@ -20,7 +20,7 @@ interface Address {
 }
 
 export interface User {
-    id: string;
+    id?: string;
     nhc?: string;
     medicalBoardNumber?: string;
     firstName: string;

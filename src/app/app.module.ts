@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { UsersListComponent, UsersListDialogComponent } from './containers/users-list/users-list.component';
 import { UsersDetailsComponent, UsersDetailsDialogComponent } from './containers/users-details/users-details.component';
 import { UsersCreateComponent } from './containers/users-create/users-create.component';
@@ -34,8 +32,6 @@ import { MatTreeModule } from "@angular/material/tree";
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
     UsersListComponent,
     UsersDetailsComponent,
     UsersCreateComponent,

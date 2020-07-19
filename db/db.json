@@ -1,79 +1,88 @@
 {
-    "users": [
+  "users": [
+    {
+      "id": "1",
+      "nhc": "0123456769",
+      "firstName": "Alvaro",
+      "lastName": "Gomez",
+      "secondLastName": null,
+      "gender": "Hombre",
+      "birthdate": "04/05/1997",
+      "identityNumber": null,
+      "address": {
+        "street": "Calle Ciudad Real",
+        "number": "1",
+        "door": "4ºD",
+        "postalCode": "28922",
+        "city": "Alcorcón"
+      },
+      "issuranceList": [
         {
-            "id": "1", 
-            "firstName": "Alvaro",
-            "lastName": "Gomez",
-            "gender": "Hombre",
-            "birthdate": "04/05/1997",
-            "nhc": "0123456769",
-            "address":
-                { "street": "Calle Ciudad Real",
-                    "number": "1",
-                    "door": "4ºD",
-                    "postalCode": "28922",
-                    "city": "Alcorcón"
-                },
-            "issuranceList": [
-                {
-                    "cardNumber": "3657415895",
-                    "name": "Adeslas",
-                    "type": "Salud"
-                },
-                {
-                    "cardNumber": "1254785412",
-                    "name": "Mutua Madrileña",
-                    "type": "Familiar"
-                }
-            ]
+          "cardNumber": "3657415895",
+          "name": "Adeslas",
+          "type": "Salud"
         },
         {
-            "id": "2", 
-            "firstName": "Jorge",
-            "lastName": "Martin",
-            "secondLastName": "García",
-            "gender": "No Binario",
-            "birthdate": "28/10/1995",
-            "medicalBoardNumber": "6969696969",
-            "address":
-                { "street": "Calle San Fermín",
-                    "number": "2",
-                    "door": "2ªB",
-                    "postalCode": "29576",
-                    "city": "Orcasitas"
-                }
+          "cardNumber": "1257895426",
+          "name": "Mapfre",
+          "type": "Dental"
+        },
+        {
+          "cardNumber": "1254785412",
+          "name": "Mutua Madrileña",
+          "type": "Familiar"
         }
-    ],
-    "issurances": [
-        {
-            "cardNumber": "3657415895",
-            "name": "Adeslas",
-            "type": "Salud"
-        },
-        {
-            "cardNumber": "1257895426",
-            "name": "Mapfre",
-            "type": "Dental"
-        },
-        {
-            "cardNumber": "1254785412",
-            "name": "Mutua Madrileña",
-            "type": "Familiar"
-        },
-        {
-            "cardNumber": "9658741236",
-            "name": "Línea Directa",
-            "type": "Familiar"
-        },
-        {
-            "cardNumber": "6541287594",
-            "name": "RACE",
-            "type": "Salud"
-        },
-        {
-            "cardNumber": "2547895456",
-            "name": "Sanitas",
-            "type": "Dental"
-        }
-    ]
+      ]
+    },
+    {
+      "id": "2",
+      "medicalBoardNumber": "6969696969",
+      "firstName": "Jorge",
+      "lastName": "Martin",
+      "secondLastName": "García",
+      "gender": "No Binario",
+      "birthdate": "28/10/1995",
+      "identityNumber": null,
+      "address": {
+        "street": "Calle San Fermín",
+        "number": "2",
+        "door": "2ªB",
+        "postalCode": "29576",
+        "city": "Orcasitas"
+      },
+      "professionalType": "Enfermero"
+    }
+  ],
+  "issurances": [
+    {
+      "cardNumber": "3657415895",
+      "name": "Adeslas",
+      "type": "Salud"
+    },
+    {
+      "cardNumber": "1257895426",
+      "name": "Mapfre",
+      "type": "Dental"
+    },
+    {
+      "cardNumber": "1254785412",
+      "name": "Mutua Madrileña",
+      "type": "Familiar"
+    },
+    {
+      "cardNumber": "9658741236",
+      "name": "Línea Directa",
+      "type": "Familiar"
+    },
+    {
+      "cardNumber": "6541287594",
+      "name": "RACE",
+      "type": "Salud"
+    },
+    {
+      "cardNumber": "2547895456",
+      "name": "Sanitas",
+      "type": "Dental"
+    }
+  ]
 }

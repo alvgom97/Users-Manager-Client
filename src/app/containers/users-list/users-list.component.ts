@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { User } from 'src/app/models/user.model';
+import { User, Issurance } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -15,7 +15,7 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.usersService.getUsers().subscribe(users => this.users = users);        
+    this.usersService.getUsers().subscribe(users => this.users = users);         
   }
 
   openDialog(id: number): void {
@@ -35,7 +35,7 @@ export class UsersListComponent implements OnInit {
 export class UsersListDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private usersService: UsersService){}
 
-  deleteUser(id: number){
+  deleteUser(id: string){
     
     this.usersService.deleteUser(id).subscribe(() => {
       window.location.reload();

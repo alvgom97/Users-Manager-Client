@@ -51,7 +51,7 @@ export class UsersDetailsComponent implements OnInit {
 export class UsersDetailsDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private usersService: UsersService, private router: Router){}
 
-  deleteUser(id: number){
+  deleteUser(id: string){
     
     this.usersService.deleteUser(id).subscribe(() => {
       this.router.navigate(['users']);
