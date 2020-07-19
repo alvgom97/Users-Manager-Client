@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/models/user.model';
 import { Subscription } from 'rxjs';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users-edit',
@@ -16,30 +17,33 @@ export class UsersEditComponent implements OnInit {
   paramsSubscription: Subscription;
 
   issuranceList: String[] = ['Salud', 'Familiar', 'Dental'];
-  professionalType: String[] = ['Médico', 'Enfermero', 'Administrativo'];
+  professionalTypeList: String[] = ['Médico', 'Enfermero', 'Administrativo'];
 
-  firstName: FormControl;
-  lastName: FormControl;
-  secondLastName: FormControl;
-  identityNumber: FormControl;
-  nhc: FormControl;
-  gender: FormControl;
-  birthdate: FormControl;
-  street: FormControl;
-  number: FormControl;
-  door: FormControl;
-  postalCode: FormControl;
-  city: FormControl;
-  issuranceCardNumber: FormControl;
-  issuranceName: FormControl;
-  issuranceType: FormControl;
+  profileForm = new FormGroup({});
+  profileFormPro = new FormGroup({});
 
-  profileForm: FormGroup;
+  firstName = new FormControl;
+  lastName = new FormControl;
+  secondLastName = new FormControl;
+  identityNumber = new FormControl;
+  nhc = new FormControl;
+  gender = new FormControl;
+  birthdate = new FormControl;
+  medicalBoardNumber = new FormControl;
+  professionalType = new FormControl;
 
-  constructor(private route: ActivatedRoute, private usersService: UsersService, private router: Router) { }
+  street = new FormControl;
+  number = new FormControl;
+  door = new FormControl;
+  postalCode = new FormControl;
+  city = new FormControl;
+  // issuranceCardNumber: FormControl;
+  // issuranceName: FormControl;
+  // issuranceType: FormControl;
+
+  constructor(private route: ActivatedRoute, private usersService: UsersService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-
 
     this.paramsSubscription = this.route.params.subscribe(params => {
 
@@ -59,9 +63,11 @@ export class UsersEditComponent implements OnInit {
           this.door = new FormControl(this.user.address.door, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
           this.postalCode = new FormControl(this.user.address.postalCode, [Validators.required, Validators.pattern(/^\d{5}$/)]);
           this.city = new FormControl(this.user.address.city, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-          this.issuranceCardNumber = new FormControl(this.user.issuranceList[0].cardNumber, [Validators.pattern(/^\d{10}$/)]);
-          this.issuranceName = new FormControl(this.user.issuranceList[0].name, [Validators.minLength(3), Validators.maxLength(20)]);
-          this.issuranceType = new FormControl(this.user.issuranceList[0].type);
+          this.medicalBoardNumber = new FormControl(this.user.medicalBoardNumber, [Validators.required, Validators.pattern(/^\d{10}$/)]);
+          this.professionalType = new FormControl(this.user.professionalType);
+          // this.issuranceCardNumber = new FormControl(this.user.issuranceList[0].cardNumber, [Validators.pattern(/^\d{10}$/)]);
+          // this.issuranceName = new FormControl(this.user.issuranceList[0].name, [Validators.minLength(3), Validators.maxLength(20)]);
+          // this.issuranceType = new FormControl(this.user.issuranceList[0].type);
 
           this.profileForm = new FormGroup({
 
@@ -79,9 +85,28 @@ export class UsersEditComponent implements OnInit {
             postalCode: this.postalCode,
             city: this.city,
 
-            issuranceCardNumber: this.issuranceCardNumber,
-            issuranceName: this.issuranceName,
-            issuranceType: this.issuranceType
+            // issuranceCardNumber: this.issuranceCardNumber,
+            // issuranceName: this.issuranceName,
+            // issuranceType: this.issuranceType
+
+          });
+
+          this.profileFormPro = new FormGroup({
+
+            firstName: this.firstName,
+            lastName: this.lastName,
+            secondLastName: this.secondLastName,
+            identityNumber: this.identityNumber,
+            gender: this.gender,
+            birthdate: this.birthdate,
+            medicalBoardNumber: this.medicalBoardNumber,
+            professionalType : this.professionalType,
+
+            street: this.street,
+            number: this.number,
+            door: this.door,
+            postalCode: this.postalCode,
+            city: this.city
 
           });
         }, error => {
@@ -121,4 +146,32 @@ export class UsersEditComponent implements OnInit {
     console.warn(this.profileForm.value);
   }
 
+  onSubmitPro() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.profileFormPro.value);
+  }
+
+  openDialog(id: number): void {
+    const dialogRef = this.dialog.open(UsersEditDialogComponent, {
+      data: { id: id },
+    });
+    
+    dialogRef.afterClosed().subscribe();
+  }
+
+}
+
+@Component({
+  selector: 'confirmation-dialog',
+  templateUrl: 'confirmation.html',
+})
+export class UsersEditDialogComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private usersService: UsersService, private router: Router){}
+
+  deleteUser(id: number){
+    
+    this.usersService.deleteUser(id).subscribe(() => {
+      this.router.navigate(['users']);
+    });
+  }
 }

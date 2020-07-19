@@ -4,7 +4,6 @@ type professional = 'Médico'
 type issurance = 'Salud'
     | 'Familiar'
     | 'Dental';
-type userType = 'Paciente' | 'Profesional';
 
 export interface Issurance {
     cardNumber?: string;
@@ -33,5 +32,4 @@ export interface User {
     address: Address;
     professionalType?: professional;
     issuranceList?: Issurance[];
-    userType: userType;
 }

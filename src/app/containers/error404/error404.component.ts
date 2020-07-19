@@ -15,7 +15,6 @@ export class Error404Component implements OnInit {
     const router : Router = this.router;
 
     setTimeout(function(){
-      console.log("nos vamos");
       router.navigate(['users']);
     }, 4000);
   }

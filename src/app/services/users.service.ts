@@ -20,4 +20,23 @@ export class UsersService {
   getUser(id: number): Observable<User> {
     return this.httpClient.get<User>(this.API_BASE_URL + '/users/' + id);
   }
+
+  deleteUser(id: number){
+    console.log("User " + id + " deleted")
+    return this.httpClient.delete<object>(this.API_BASE_URL + '/users/' + id);
+    
+  }
+
+  updateUser(id: number){
+    // return this.httpClient.put<Post>(this.API_URL + 'posts/' + post.id, post);
+  }
+
+  createUser(){
+    // return this.httpClient.post<Post>(this.API_URL + 'posts', post);
+  }
+
+  deleteDoctors(){
+
+  }
+
 }

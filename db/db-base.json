@@ -16,14 +16,14 @@
                 },
             "issuranceList": [
                 {
-                    "cardNumber": "3657415895",
-                    "name": "Adeslas",
+                    "cardNumber": "123456789",
+                    "name": "Aseguradora 1",
                     "type": "Salud"
                 },
                 {
-                    "cardNumber": "1254785412",
-                    "name": "Mutua Madrileña",
-                    "type": "Familiar"
+                    "cardNumber": "987654321",
+                    "name": "Aseguradora 2",
+                    "type": "Dental"
                 }
             ]
         },
@@ -42,38 +42,6 @@
                     "postalCode": "29576",
                     "city": "Orcasitas"
                 }
-        }
-    ],
-    "issurances": [
-        {
-            "cardNumber": "3657415895",
-            "name": "Adeslas",
-            "type": "Salud"
-        },
-        {
-            "cardNumber": "1257895426",
-            "name": "Mapfre",
-            "type": "Dental"
-        },
-        {
-            "cardNumber": "1254785412",
-            "name": "Mutua Madrileña",
-            "type": "Familiar"
-        },
-        {
-            "cardNumber": "9658741236",
-            "name": "Línea Directa",
-            "type": "Familiar"
-        },
-        {
-            "cardNumber": "6541287594",
-            "name": "RACE",
-            "type": "Salud"
-        },
-        {
-            "cardNumber": "2547895456",
-            "name": "Sanitas",
-            "type": "Dental"
         }
     ]
 }

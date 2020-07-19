@@ -34,7 +34,7 @@
       <mat-list-item>Código Postal: {{user?.address.postalCode}}</mat-list-item>
     </mat-expansion-panel>
 
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" > 
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"  *ngIf="!user?.medicalBoardNumber"> 
       <mat-expansion-panel-header>
         <mat-panel-title>
           Aseguradoras:
@@ -54,8 +54,9 @@
   </mat-accordion>
   
   <div id="options">
+    <button mat-fab color="primary" routerLink='/users' ><mat-icon>keyboard_arrow_left</mat-icon></button>
+    <button mat-fab color="primary" (click)=openDialog(user?.id)><mat-icon>delete_forever</mat-icon></button>
     <button mat-fab color="primary" routerLink='edit' ><mat-icon>edit</mat-icon></button>
-    <button mat-fab color="primary" ><mat-icon>delete_forever</mat-icon></button>
   </div>
 
 </mat-list>

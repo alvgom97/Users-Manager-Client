@@ -1,6 +1,6 @@
 <h2 id="title">Editar Usuario</h2>
 
-<mat-list *ngIf="user">
+<div *ngIf="!user?.medicalBoardNumber">
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
         <mat-accordion>
 
@@ -116,11 +116,125 @@
         </mat-accordion>
 
         <div id="options">
-            <button mat-fab color="primary" routerLink='/users/{{user.id}}' ><mat-icon>keyboard_arrow_left</mat-icon></button>
-            <button mat-fab color="primary" ><mat-icon>delete_forever</mat-icon></button>
-            <button mat-fab type="submit" color="primary" ><mat-icon>send</mat-icon></button>
-          <!-- [disabled]="!profileFormProf.valid" -->
+            <button mat-fab color="primary" routerLink='/users'><mat-icon>keyboard_arrow_left</mat-icon></button>
+            <button mat-fab color="primary" (click)=deleteUser(user?.id)><mat-icon>delete_forever</mat-icon></button>
+            <button mat-fab type="submit" color="primary" [disabled]="!profileForm.valid"><mat-icon>send</mat-icon></button>
           </div>
 
     </form>
-</mat-list>
+</div>
+
+<div *ngIf="user?.medicalBoardNumber">
+    <form [formGroup]="profileFormPro" (ngSubmit)="onSubmitPro()">
+        <mat-accordion>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Datos Personales:
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>Nombre:</mat-label>
+                    <input matInput placeholder="Álvaro" formControlName="firstName" required />
+                    <mat-error *ngIf="firstName.invalid">{{getErrorMessage(firstName)}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>Primer apellido:</mat-label>
+                    <input matInput placeholder="Gómez" formControlName="lastName" required />
+                    <mat-error *ngIf="lastName.invalid">{{getErrorMessage(lastName)}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>Segundo apellido:</mat-label>
+                    <input matInput placeholder="Martín" formControlName="secondLastName" />
+                    <mat-error *ngIf="secondLastName.invalid">{{getErrorMessage(secondLastName)}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>Género:</mat-label>
+                    <mat-select name="gender" formControlName="gender">
+                        <mat-option value="Mujer">Mujer</mat-option>
+                        <mat-option value="Hombre">Hombre</mat-option>
+                        <mat-option value="No Binario">No Binario</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>Fecha de Nacimiento:</mat-label>
+                    <input matInput placeholder="04/05/1997" formControlName="birthdate" required />
+                    <mat-error *ngIf="birthdate.invalid">{{getErrorMessage(birthdate)}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>Num de Identificación:</mat-label>
+                    <input matInput placeholder="12345678Z" formControlName="identityNumber" />
+                    <mat-error *ngIf="identityNumber.invalid">{{getErrorMessage(identityNumber)}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>Num de Colegiado:</mat-label>
+                    <input matInput placeholder="9876543210" formControlName="medicalBoardNumber" required />
+                    <mat-error *ngIf="medicalBoardNumber.invalid">{{getErrorMessage(medicalBoardNumber)}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>Tipo de Profesional:</mat-label>
+                    <mat-select name="professionalType" formControlName="professionalType" >
+                      <mat-option *ngFor="let prof of professionalTypeList" [value]="prof">
+                        {{prof}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Dirección:
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Calle:</mat-label>
+                    <input matInput placeholder="Calle Mayor" formControlName="street" required />
+                    <mat-error *ngIf="street.invalid">{{getErrorMessage(street)}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Número:</mat-label>
+                    <input matInput placeholder="14" formControlName="number" required />
+                    <mat-error *ngIf="number.invalid">{{getErrorMessage(number)}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Puerta:</mat-label>
+                    <input matInput placeholder="4ºD" formControlName="door" required />
+                    <mat-error *ngIf="door.invalid">{{getErrorMessage(door)}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Código Postal:</mat-label>
+                    <input matInput placeholder="28922" formControlName="postalCode" required />
+                    <mat-error *ngIf="postalCode.invalid">{{getErrorMessage(postalCode)}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Ciudad:</mat-label>
+                    <input matInput placeholder="Alcorcón" formControlName="city" required />
+                    <mat-error *ngIf="city.invalid">{{getErrorMessage(city)}}</mat-error>
+                </mat-form-field>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <div id="options">
+            <button mat-fab color="primary" routerLink='/users/{{user.id}}' ><mat-icon>keyboard_arrow_left</mat-icon></button>
+            <button mat-fab color="primary" (click)=openDialog(user?.id)><mat-icon>delete_forever</mat-icon></button>
+            <button mat-fab type="submit" color="primary" [disabled]="!profileFormPro.valid"><mat-icon>send</mat-icon></button>
+          </div>
+
+    </form>
+</div> 

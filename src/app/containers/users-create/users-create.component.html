@@ -57,11 +57,6 @@
             <mat-error *ngIf="nhc.invalid">{{getErrorMessage(nhc)}}</mat-error>
           </mat-form-field>
 
-          <mat-form-field class="hidden">
-            <input matInput name="userType" [formControl]="userType"/>
-          </mat-form-field>
-          
-
         </mat-expansion-panel>
 
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -210,10 +205,6 @@
                 {{prof}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
-
-          <mat-form-field class="hidden">
-            <input matInput name="userTypePro" [formControl]="userTypePro"/>
           </mat-form-field>
 
         </mat-expansion-panel>
