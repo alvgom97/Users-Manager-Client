@@ -40,7 +40,7 @@
 
                 <mat-form-field appearance="legacy">
                     <mat-label>Fecha de Nacimiento:</mat-label>
-                    <input matInput placeholder="04/05/1997" [formControl]="birthdate" required />
+                    <input matInput placeholder="04/05/1997" [formControl]="birthdate" />
                     <mat-error *ngIf="birthdate.invalid">{{getErrorMessage(birthdate)}}</mat-error>
                 </mat-form-field>
 
@@ -67,31 +67,31 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Calle:</mat-label>
-                    <input matInput placeholder="Calle Mayor" [formControl]="street" required />
+                    <input matInput placeholder="Calle Mayor" [formControl]="street" />
                     <mat-error *ngIf="street.invalid">{{getErrorMessage(street)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Número:</mat-label>
-                    <input matInput placeholder="14" [formControl]="number" required />
+                    <input matInput placeholder="14" [formControl]="number" />
                     <mat-error *ngIf="number.invalid">{{getErrorMessage(number)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Puerta:</mat-label>
-                    <input matInput placeholder="4ºD" [formControl]="door" required />
+                    <input matInput placeholder="4ºD" [formControl]="door" />
                     <mat-error *ngIf="door.invalid">{{getErrorMessage(door)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Código Postal:</mat-label>
-                    <input matInput placeholder="28922" [formControl]="postalCode" required />
+                    <input matInput placeholder="28922" [formControl]="postalCode" />
                     <mat-error *ngIf="postalCode.invalid">{{getErrorMessage(postalCode)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Ciudad:</mat-label>
-                    <input matInput placeholder="Alcorcón" [formControl]="city" required />
+                    <input matInput placeholder="Alcorcón" [formControl]="city" />
                     <mat-error *ngIf="city.invalid">{{getErrorMessage(city)}}</mat-error>
                 </mat-form-field>
             </mat-expansion-panel>
@@ -132,7 +132,7 @@
             <button mat-fab color="primary" routerLink='/users'>
                 <mat-icon>keyboard_arrow_left</mat-icon>
             </button>
-            <button mat-fab color="primary" (click)=deleteUser(user?.id)>
+            <button mat-fab color="primary" (click)=openDialog(user?.id)>
                 <mat-icon>delete_forever</mat-icon>
             </button>
             <button mat-fab type="submit" color="primary" [disabled]="!profileForm.valid">
@@ -156,25 +156,25 @@
 
                 <mat-form-field appearance="legacy">
                     <mat-label>Nombre:</mat-label>
-                    <input matInput placeholder="Álvaro" formControlName="firstName" required />
-                    <mat-error *ngIf="firstName.invalid">{{getErrorMessage(firstName)}}</mat-error>
+                    <input matInput placeholder="Álvaro" formControlName="firstNameProf" required />
+                    <mat-error *ngIf="firstNameProf.invalid">{{getErrorMessage(firstNameProf)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="legacy">
                     <mat-label>Primer apellido:</mat-label>
-                    <input matInput placeholder="Gómez" formControlName="lastName" required />
-                    <mat-error *ngIf="lastName.invalid">{{getErrorMessage(lastName)}}</mat-error>
+                    <input matInput placeholder="Gómez" formControlName="lastNameProf" required />
+                    <mat-error *ngIf="lastNameProf.invalid">{{getErrorMessage(lastNameProf)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="legacy">
                     <mat-label>Segundo apellido:</mat-label>
-                    <input matInput placeholder="Martín" formControlName="secondLastName" />
-                    <mat-error *ngIf="secondLastName.invalid">{{getErrorMessage(secondLastName)}}</mat-error>
+                    <input matInput placeholder="Martín" formControlName="secondLastNameProf" />
+                    <mat-error *ngIf="secondLastNameProf.invalid">{{getErrorMessage(secondLastNameProf)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="legacy">
                     <mat-label>Género:</mat-label>
-                    <mat-select name="gender" formControlName="gender">
+                    <mat-select name="gender" formControlName="genderProf">
                         <mat-option value="Mujer">Mujer</mat-option>
                         <mat-option value="Hombre">Hombre</mat-option>
                         <mat-option value="No Binario">No Binario</mat-option>
@@ -183,14 +183,14 @@
 
                 <mat-form-field appearance="legacy">
                     <mat-label>Fecha de Nacimiento:</mat-label>
-                    <input matInput placeholder="04/05/1997" formControlName="birthdate" required />
-                    <mat-error *ngIf="birthdate.invalid">{{getErrorMessage(birthdate)}}</mat-error>
+                    <input matInput placeholder="04/05/1997" formControlName="birthdateProf" />
+                    <mat-error *ngIf="birthdateProf.invalid">{{getErrorMessage(birthdateProf)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="legacy">
                     <mat-label>Num de Identificación:</mat-label>
-                    <input matInput placeholder="12345678Z" formControlName="identityNumber" />
-                    <mat-error *ngIf="identityNumber.invalid">{{getErrorMessage(identityNumber)}}</mat-error>
+                    <input matInput placeholder="12345678Z" formControlName="identityNumberProf" />
+                    <mat-error *ngIf="identityNumberProf.invalid">{{getErrorMessage(identityNumberProf)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="legacy">
@@ -219,32 +219,32 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Calle:</mat-label>
-                    <input matInput placeholder="Calle Mayor" formControlName="street" required />
-                    <mat-error *ngIf="street.invalid">{{getErrorMessage(street)}}</mat-error>
+                    <input matInput placeholder="Calle Mayor" formControlName="streetProf" />
+                    <mat-error *ngIf="streetProf.invalid">{{getErrorMessage(streetProf)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Número:</mat-label>
-                    <input matInput placeholder="14" formControlName="number" required />
-                    <mat-error *ngIf="number.invalid">{{getErrorMessage(number)}}</mat-error>
+                    <input matInput placeholder="14" formControlName="numberProf" />
+                    <mat-error *ngIf="numberProf.invalid">{{getErrorMessage(numberProf)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Puerta:</mat-label>
-                    <input matInput placeholder="4ºD" formControlName="door" required />
-                    <mat-error *ngIf="door.invalid">{{getErrorMessage(door)}}</mat-error>
+                    <input matInput placeholder="4ºD" formControlName="doorProf" />
+                    <mat-error *ngIf="doorProf.invalid">{{getErrorMessage(doorProf)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Código Postal:</mat-label>
-                    <input matInput placeholder="28922" formControlName="postalCode" required />
-                    <mat-error *ngIf="postalCode.invalid">{{getErrorMessage(postalCode)}}</mat-error>
+                    <input matInput placeholder="28922" formControlName="postalCodeProf" />
+                    <mat-error *ngIf="postalCodeProf.invalid">{{getErrorMessage(postalCodeProf)}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Ciudad:</mat-label>
-                    <input matInput placeholder="Alcorcón" formControlName="city" required />
-                    <mat-error *ngIf="city.invalid">{{getErrorMessage(city)}}</mat-error>
+                    <input matInput placeholder="Alcorcón" formControlName="cityProf" />
+                    <mat-error *ngIf="cityProf.invalid">{{getErrorMessage(cityProf)}}</mat-error>
                 </mat-form-field>
             </mat-expansion-panel>
         </mat-accordion>

@@ -26,9 +26,10 @@ export class UsersEditComponent implements OnInit {
   lastName = new FormControl;
   secondLastName = new FormControl;
   identityNumber = new FormControl;
-  nhc = new FormControl;
   gender = new FormControl;
   birthdate = new FormControl;
+
+  nhc = new FormControl;
   medicalBoardNumber = new FormControl;
   professionalType = new FormControl;
 
@@ -38,6 +39,21 @@ export class UsersEditComponent implements OnInit {
   postalCode = new FormControl;
   city = new FormControl;
   issuranceList = new FormControl;
+
+  firstNameProf = new FormControl;
+  lastNameProf = new FormControl;
+  secondLastNameProf = new FormControl;
+  identityNumberProf = new FormControl;
+  genderProf = new FormControl;
+  birthdateProf = new FormControl;
+
+  streetProf = new FormControl;
+  numberProf = new FormControl;
+  doorProf = new FormControl;
+  postalCodeProf = new FormControl;
+  cityProf = new FormControl;
+  issuranceListProf = new FormControl;
+
 
   constructor(private route: ActivatedRoute, private usersService: UsersService, private router: Router, public dialog: MatDialog) {
     this.usersService.getIssurances().subscribe(issurances => this.issurances = issurances); 
@@ -58,14 +74,26 @@ export class UsersEditComponent implements OnInit {
           this.gender = new FormControl(this.user.gender);
           this.birthdate = new FormControl(this.user.birthdate, [Validators.pattern(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/)]);
           this.nhc = new FormControl(this.user.nhc, [Validators.required, Validators.pattern(/^\d{10}$/)]);
-          this.street = new FormControl(this.user.address.street, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-          this.number = new FormControl(this.user.address.number, [Validators.required, Validators.pattern(/^\d*$/)]);
-          this.door = new FormControl(this.user.address.door, [Validators.required, Validators.minLength(1), Validators.maxLength(20)]);
-          this.postalCode = new FormControl(this.user.address.postalCode, [Validators.required, Validators.pattern(/^\d{5}$/)]);
-          this.city = new FormControl(this.user.address.city, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
+          this.street = new FormControl(this.user.address.street, [Validators.minLength(3), Validators.maxLength(20)]);
+          this.number = new FormControl(this.user.address.number, [Validators.pattern(/^\d*$/)]);
+          this.door = new FormControl(this.user.address.door, [Validators.minLength(1), Validators.maxLength(20)]);
+          this.postalCode = new FormControl(this.user.address.postalCode, [Validators.pattern(/^\d{5}$/)]);
+          this.city = new FormControl(this.user.address.city, [Validators.minLength(3), Validators.maxLength(20)]);
           this.medicalBoardNumber = new FormControl(this.user.medicalBoardNumber, [Validators.required, Validators.pattern(/^\d{10}$/)]);
           this.professionalType = new FormControl(this.user.professionalType);
           this.issuranceList = new FormControl(this.user.issuranceList);
+
+          this.firstNameProf = new FormControl(this.user.firstName, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
+          this.lastNameProf = new FormControl(this.user.lastName, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
+          this.secondLastNameProf = new FormControl(this.user.secondLastName, [Validators.minLength(3), Validators.maxLength(20)]);
+          this.identityNumberProf = new FormControl(this.user.identityNumber, [Validators.pattern(/^\d{8}[a-zA-Z]$/)]);
+          this.genderProf = new FormControl(this.user.gender);
+          this.birthdateProf = new FormControl(this.user.birthdate, [Validators.pattern(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/)]);
+          this.streetProf = new FormControl(this.user.address.street, [Validators.minLength(3), Validators.maxLength(20)]);
+          this.numberProf = new FormControl(this.user.address.number, [Validators.pattern(/^\d*$/)]);
+          this.doorProf = new FormControl(this.user.address.door, [Validators.minLength(1), Validators.maxLength(20)]);
+          this.postalCodeProf = new FormControl(this.user.address.postalCode, [Validators.pattern(/^\d{5}$/)]);
+          this.cityProf = new FormControl(this.user.address.city, [Validators.minLength(3), Validators.maxLength(20)]);
 
           this.profileForm = new FormGroup({
 
@@ -89,20 +117,20 @@ export class UsersEditComponent implements OnInit {
 
           this.profileFormProf = new FormGroup({
 
-            firstName: this.firstName,
-            lastName: this.lastName,
-            secondLastName: this.secondLastName,
-            identityNumber: this.identityNumber,
-            gender: this.gender,
-            birthdate: this.birthdate,
+            firstNameProf: this.firstNameProf,
+            lastNameProf: this.lastNameProf,
+            secondLastNameProf: this.secondLastNameProf,
+            identityNumberProf: this.identityNumberProf,
+            genderProf: this.genderProf,
+            birthdateProf: this.birthdateProf,
             medicalBoardNumber: this.medicalBoardNumber,
             professionalType : this.professionalType,
 
-            street: this.street,
-            number: this.number,
-            door: this.door,
-            postalCode: this.postalCode,
-            city: this.city
+            streetProf: this.streetProf,
+            numberProf: this.numberProf,
+            doorProf: this.doorProf,
+            postalCodeProf: this.postalCodeProf,
+            cityProf: this.cityProf
 
           });
         }, error => {
@@ -137,7 +165,7 @@ export class UsersEditComponent implements OnInit {
     return error;
   }
 
-  onSubmit() {
+  onSubmit() { 
     
     let address: Address = {
       street: this.profileForm.value.street,
@@ -166,22 +194,22 @@ export class UsersEditComponent implements OnInit {
   onSubmitProf() {
     
     let address: Address = {
-      street: this.profileFormProf.value.street,
-      number: this.profileFormProf.value.number,
-      door: this.profileFormProf.value.door,
-      postalCode: this.profileFormProf.value.postalCode,
-      city: this.profileFormProf.value.city,
+      street: this.profileFormProf.value.streetProf,
+      number: this.profileFormProf.value.numberProf,
+      door: this.profileFormProf.value.doorProf,
+      postalCode: this.profileFormProf.value.postalCodeProf,
+      city: this.profileFormProf.value.cityProf,
     };
 
     let user: User = {
       id: this.user.id,
       medicalBoardNumber: this.profileFormProf.value.medicalBoardNumber,
-      firstName: this.profileFormProf.value.firstName,
-      lastName: this.profileFormProf.value.lastName,
-      secondLastName: this.profileFormProf.value.secondLastName,
-      gender: this.profileFormProf.value.gender,
-      birthdate: this.profileFormProf.value.birthdate,
-      identityNumber: this.profileFormProf.value.identityNumber,
+      firstName: this.profileFormProf.value.firstNameProf,
+      lastName: this.profileFormProf.value.lastNameProf,
+      secondLastName: this.profileFormProf.value.secondLastNameProf,
+      gender: this.profileFormProf.value.genderProf,
+      birthdate: this.profileFormProf.value.birthdateProf,
+      identityNumber: this.profileFormProf.value.identityNumberProf,
       address: address,
       professionalType: this.profileFormProf.value.professionalType
     };

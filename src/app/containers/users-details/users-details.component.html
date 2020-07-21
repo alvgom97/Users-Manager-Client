@@ -13,7 +13,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-list-item *ngIf="user.secondLastName">Segundo Apellido: {{user?.secondLastName}}</mat-list-item>
-      <mat-list-item>Género: {{user?.gender}}</mat-list-item>
+      <mat-list-item *ngIf="user.gender">Género: {{user?.gender}}</mat-list-item>
       <mat-list-item *ngIf="user.birthdate">Fecha de Nacimiento: {{user?.birthdate}}</mat-list-item>
       <mat-list-item *ngIf="user.identityNumber">Número de Identidad: {{user?.identityNumber}}</mat-list-item>
       <mat-list-item *ngIf="user.medicalBoardNumber">Número de Colegiado: {{user?.medicalBoardNumber}}</mat-list-item>
@@ -27,11 +27,11 @@
           Dirección:
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-list-item>Calle: {{user?.address.street}}</mat-list-item>
-      <mat-list-item>Numero: {{user?.address.number}}</mat-list-item>
-      <mat-list-item>Piso: {{user?.address.door}}</mat-list-item>
-      <mat-list-item>Ciudad: {{user?.address.city}}</mat-list-item>
-      <mat-list-item>Código Postal: {{user?.address.postalCode}}</mat-list-item>
+      <mat-list-item *ngIf="user.address.street">Calle: {{user?.address.street}}</mat-list-item>
+      <mat-list-item *ngIf="user.address.number">Numero: {{user?.address.number}}</mat-list-item>
+      <mat-list-item *ngIf="user.address.door">Piso: {{user?.address.door}}</mat-list-item>
+      <mat-list-item *ngIf="user.address.city">Ciudad: {{user?.address.city}}</mat-list-item>
+      <mat-list-item *ngIf="user.address.postalCode">Código Postal: {{user?.address.postalCode}}</mat-list-item>
     </mat-expansion-panel>
 
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"  *ngIf="!user?.medicalBoardNumber"> 
