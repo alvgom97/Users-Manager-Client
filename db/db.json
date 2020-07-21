@@ -51,6 +51,24 @@
         "city": "Orcasitas"
       },
       "professionalType": "Enfermero"
+    },
+    {
+      "nhc": "0123456789",
+      "firstName": "out",
+      "lastName": "bye",
+      "secondLastName": "",
+      "gender": null,
+      "birthdate": "",
+      "identityNumber": "",
+      "address": {
+        "street": "",
+        "number": "",
+        "door": "",
+        "postalCode": "",
+        "city": ""
+      },
+      "issuranceList": null,
+      "id": "r_6F9Rq"
     }
   ],
   "issurances": [

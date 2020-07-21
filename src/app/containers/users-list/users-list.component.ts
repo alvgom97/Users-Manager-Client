@@ -23,7 +23,7 @@ export class UsersListComponent implements OnInit {
       data: { id: id },
     });
     
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe(() => this.usersService.getUsers().subscribe(users => this.users = users));
   }
 
 }
@@ -37,8 +37,6 @@ export class UsersListDialogComponent {
 
   deleteUser(id: string){
     
-    this.usersService.deleteUser(id).subscribe(() => {
-      window.location.reload();
-    });
+    this.usersService.deleteUser(id).subscribe();
   }
 }
