@@ -1,4 +1,4 @@
-# Álvaro Gomez's Proyect
+# Álvaro Gomez's Project
 
 ## Deployment
 
