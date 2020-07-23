@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
-import { User, Address, Issurance } from 'src/app/models/user.model';
+import { User, Address, Insurance } from 'src/app/models/user.model';
 import { Subscription } from 'rxjs';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
@@ -17,7 +17,7 @@ export class UsersEditComponent implements OnInit {
   paramsSubscription: Subscription;
 
   professionalTypeList: String[] = ['Médico', 'Enfermero', 'Administrativo'];
-  issurances: Issurance[];
+  insurances: Insurance[];
 
   profileForm = new FormGroup({});
   profileFormProf = new FormGroup({});
@@ -38,7 +38,7 @@ export class UsersEditComponent implements OnInit {
   door = new FormControl;
   postalCode = new FormControl;
   city = new FormControl;
-  issuranceList = new FormControl;
+  insuranceList = new FormControl;
 
   firstNameProf = new FormControl;
   lastNameProf = new FormControl;
@@ -52,18 +52,18 @@ export class UsersEditComponent implements OnInit {
   doorProf = new FormControl;
   postalCodeProf = new FormControl;
   cityProf = new FormControl;
-  issuranceListProf = new FormControl;
+  insuranceListProf = new FormControl;
 
 
   constructor(private route: ActivatedRoute, private usersService: UsersService, private router: Router, public dialog: MatDialog) {
-    this.usersService.getIssurances().subscribe(issurances => this.issurances = issurances); 
+    this.usersService.getInsurances().subscribe(insurances => this.insurances = insurances); 
    }
 
   ngOnInit(): void {
 
     this.paramsSubscription = this.route.params.subscribe(params => {
 
-      this.usersService.getUser(params.id)
+      this.usersService.getUser(params._id)
         .subscribe(user => {
           this.user = user;
 
@@ -81,7 +81,7 @@ export class UsersEditComponent implements OnInit {
           this.city = new FormControl(this.user.address.city, [Validators.minLength(3), Validators.maxLength(20)]);
           this.medicalBoardNumber = new FormControl(this.user.medicalBoardNumber, [Validators.required, Validators.pattern(/^\d{10}$/)]);
           this.professionalType = new FormControl(this.user.professionalType);
-          this.issuranceList = new FormControl(this.user.issuranceList);
+          this.insuranceList = new FormControl(this.user.insuranceList);
 
           this.firstNameProf = new FormControl(this.user.firstName, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
           this.lastNameProf = new FormControl(this.user.lastName, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
@@ -111,7 +111,7 @@ export class UsersEditComponent implements OnInit {
             postalCode: this.postalCode,
             city: this.city,
 
-            issuranceList: this.issuranceList
+            insuranceList: this.insuranceList
 
           });
 
@@ -176,7 +176,7 @@ export class UsersEditComponent implements OnInit {
     };
 
     let user: User = {
-      id: this.user.id,
+      _id: this.user._id,
       nhc: this.profileForm.value.nhc,
       firstName: this.profileForm.value.firstName,
       lastName: this.profileForm.value.lastName,
@@ -185,9 +185,9 @@ export class UsersEditComponent implements OnInit {
       birthdate: this.profileForm.value.birthdate,
       identityNumber: this.profileForm.value.identityNumber,
       address: address,
-      issuranceList: this.profileForm.value.issuranceList
+      insuranceList: this.profileForm.value.insuranceList
     };
-    
+    console.log(user);
     this.usersService.updateUser(user).subscribe(() => this.router.navigate(['users']));
   }
 
@@ -202,7 +202,7 @@ export class UsersEditComponent implements OnInit {
     };
 
     let user: User = {
-      id: this.user.id,
+      _id: this.user._id,
       medicalBoardNumber: this.profileFormProf.value.medicalBoardNumber,
       firstName: this.profileFormProf.value.firstNameProf,
       lastName: this.profileFormProf.value.lastNameProf,
@@ -218,9 +218,9 @@ export class UsersEditComponent implements OnInit {
 
   }
 
-  openDialog(id: number): void {
+  openDialog(_id: number): void {
     const dialogRef = this.dialog.open(UsersEditDialogComponent, {
-      data: { id: id },
+      data: { _id: _id },
     });
     
     dialogRef.afterClosed().subscribe();
@@ -235,9 +235,9 @@ export class UsersEditComponent implements OnInit {
 export class UsersEditDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private usersService: UsersService, private router: Router){}
 
-  deleteUser(id: string){
+  deleteUser(_id: string){
     
-    this.usersService.deleteUser(id).subscribe(() => {
+    this.usersService.deleteUser(_id).subscribe(() => {
       this.router.navigate(['users']);
     });
   }

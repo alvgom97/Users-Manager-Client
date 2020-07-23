@@ -40,7 +40,7 @@
           Aseguradoras:
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-expansion-panel *ngFor="let i of user?.issuranceList" (opened)="panelOpenState = true"
+      <mat-expansion-panel *ngFor="let i of user?.insuranceList" (opened)="panelOpenState = true"
         (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -55,7 +55,7 @@
   
   <div id="options">
     <button mat-fab color="primary" routerLink='/users' ><mat-icon>keyboard_arrow_left</mat-icon></button>
-    <button mat-fab color="primary" (click)=openDialog(user?.id)><mat-icon>delete_forever</mat-icon></button>
+    <button mat-fab color="primary" (click)=openDialog(user?._id)><mat-icon>delete_forever</mat-icon></button>
     <button mat-fab color="primary" routerLink='edit' ><mat-icon>edit</mat-icon></button>
   </div>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { Issurance } from 'src/app/models/user.model';
+import { Insurance } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 import { User, Address } from "src/app/models/user.model";
@@ -18,12 +18,12 @@ export class UsersCreateComponent implements OnInit {
 
   genders: string[] = ["Mujer", "Hombre", "No Binario"];
   professionalTypeList: String[] = ['Médico', 'Enfermero', 'Administrativo']; 
-  issurances: Issurance[];
+  insurances: Insurance[];
 
 
   ngOnInit(): void {
 
-    this.usersService.getIssurances().subscribe(issurances => this.issurances = issurances); 
+    this.usersService.getInsurances().subscribe(insurances => this.insurances = insurances); 
   }
 
   firstName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
@@ -55,7 +55,7 @@ export class UsersCreateComponent implements OnInit {
   cityProf = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)]);
   professionalType = new FormControl();
 
-  issuranceList = new FormControl();
+  insuranceList = new FormControl();
 
   profileForm = new FormGroup({
 
@@ -73,7 +73,7 @@ export class UsersCreateComponent implements OnInit {
     postalCode: this.postalCode,
     city: this.city,
 
-    issuranceList: this.issuranceList
+    insuranceList: this.insuranceList
   });
 
   profileFormProf = new FormGroup({
@@ -135,7 +135,7 @@ export class UsersCreateComponent implements OnInit {
       birthdate: this.profileForm.value.birthdate,
       identityNumber: this.profileForm.value.identityNumber,
       address: address,
-      issuranceList: this.profileForm.value.issuranceList
+      insuranceList: this.profileForm.value.insuranceList
     };
 
     this.usersService.createUser(user).subscribe(() => this.router.navigate(['users']));

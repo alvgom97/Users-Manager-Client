@@ -1,7 +1,7 @@
 {
     "users": [
         {
-            "id": "1", 
+            "_id": "1", 
             "firstName": "Alvaro",
             "lastName": "Gomez",
             "gender": "Hombre",
@@ -14,7 +14,7 @@
                     "postalCode": "28922",
                     "city": "Alcorcón"
                 },
-            "issuranceList": [
+            "insuranceList": [
                 {
                     "cardNumber": "123456789",
                     "name": "Aseguradora 1",
@@ -28,7 +28,7 @@
             ]
         },
         {
-            "id": "2", 
+            "_id": "2", 
             "firstName": "Jorge",
             "lastName": "Martin",
             "secondLastName": "García",

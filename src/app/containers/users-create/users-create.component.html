@@ -109,9 +109,9 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Seleccione:</mat-label>
-            <mat-select name="issurance" [formControl]="issuranceList" multiple>
-              <mat-option *ngFor="let issurance of issurances" [value]="issurance">
-                {{issurance?.name}} ({{issurance?.type}})
+            <mat-select name="insurance" [formControl]="insuranceList" multiple>
+              <mat-option *ngFor="let insurance of insurances" [value]="insurance">
+                {{insurance?.name}} ({{insurance?.type}})
               </mat-option>
             </mat-select>
           </mat-form-field>

@@ -58,7 +58,7 @@ export class DrawerDialogComponent {
       }).forEach(d => {
 
         this.usersService.getUsers().subscribe(users => this.doctors = users);
-        return this.usersService.deleteUser(d.id).subscribe(() => {
+        return this.usersService.deleteUser(d._id).subscribe(() => {
             this.router.navigate(['users']);
             window.location.reload();
           });

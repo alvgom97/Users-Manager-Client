@@ -20,7 +20,7 @@ export class UsersDetailsComponent implements OnInit {
 
     this.paramsSubscription = this.route.params.subscribe(params => {
 
-      this.usersService.getUser(params.id)
+      this.usersService.getUser(params._id)
         .subscribe(user => {
           this.user = user
         }, error => {
@@ -34,9 +34,9 @@ export class UsersDetailsComponent implements OnInit {
     this.paramsSubscription.unsubscribe();
   }
 
-  openDialog(id: number): void {
+  openDialog(_id: number): void {
     const dialogRef = this.dialog.open(UsersDetailsDialogComponent, {
-      data: { id: id },
+      data: { _id: _id },
     });
     
     dialogRef.afterClosed().subscribe();
@@ -51,9 +51,9 @@ export class UsersDetailsComponent implements OnInit {
 export class UsersDetailsDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private usersService: UsersService, private router: Router){}
 
-  deleteUser(id: string){
+  deleteUser(_id: string){
     
-    this.usersService.deleteUser(id).subscribe(() => {
+    this.usersService.deleteUser(_id).subscribe(() => {
       this.router.navigate(['users']);
     });
   }

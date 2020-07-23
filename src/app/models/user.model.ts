@@ -1,14 +1,14 @@
 type professional = 'Médico'
     | 'Enfermero'
     | 'Administrativo';
-type issurance = 'Salud'
+type insurance = 'Salud'
     | 'Familiar'
     | 'Dental';
 
-export interface Issurance {
+export interface Insurance {
     cardNumber?: string;
     name?: string;
-    type?: issurance;
+    type?: insurance;
 
 }
 export interface Address {
@@ -20,7 +20,7 @@ export interface Address {
 }
 
 export interface User {
-    id?: string;
+    _id?: string;
     nhc?: string;
     medicalBoardNumber?: string;
     firstName: string;
@@ -31,5 +31,5 @@ export interface User {
     identityNumber?: string;
     address: Address;
     professionalType?: professional;
-    issuranceList?: Issurance[];
+    insuranceList?: Insurance[];
 }

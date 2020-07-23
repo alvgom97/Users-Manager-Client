@@ -16,13 +16,13 @@
     </mat-expansion-panel-header>
 
     <mat-list-item>
-        <div routerLink='{{user?.id}}' class="option"><mat-icon>search</mat-icon>&nbsp;&nbsp;Detalles</div>
+        <div routerLink='{{user?._id}}' class="option"><mat-icon>search</mat-icon>&nbsp;&nbsp;Detalles</div>
     </mat-list-item>
     <mat-list-item>
-        <div routerLink='{{user?.id}}/edit' class="option"><mat-icon>edit</mat-icon>&nbsp;&nbsp;Editar</div>
+        <div routerLink='{{user?._id}}/edit' class="option"><mat-icon>edit</mat-icon>&nbsp;&nbsp;Editar</div>
     </mat-list-item>
     <mat-list-item>
-        <div class="option" (click)="openDialog(user?.id)"><mat-icon>delete_forever</mat-icon>&nbsp;&nbsp;Eliminar</div>
+        <div class="option" (click)="openDialog(user?._id)"><mat-icon>delete_forever</mat-icon>&nbsp;&nbsp;Eliminar</div>
     </mat-list-item>
     
   </mat-expansion-panel>

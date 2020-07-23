@@ -1,7 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
       "nhc": "0123456769",
       "firstName": "Alvaro",
       "lastName": "Gomez",
@@ -16,7 +15,7 @@
         "postalCode": "28922",
         "city": "Alcorcón"
       },
-      "issuranceList": [
+      "insuranceList": [
         {
           "cardNumber": "3657415895",
           "name": "Adeslas",
@@ -35,7 +34,6 @@
       ]
     },
     {
-      "id": "2",
       "medicalBoardNumber": "6969696969",
       "firstName": "Jorge",
       "lastName": "Martin",
@@ -51,27 +49,9 @@
         "city": "Orcasitas"
       },
       "professionalType": "Enfermero"
-    },
-    {
-      "nhc": "0123456789",
-      "firstName": "out",
-      "lastName": "bye",
-      "secondLastName": "",
-      "gender": null,
-      "birthdate": "",
-      "identityNumber": "",
-      "address": {
-        "street": "",
-        "number": "",
-        "door": "",
-        "postalCode": "",
-        "city": ""
-      },
-      "issuranceList": null,
-      "id": "r_6F9Rq"
     }
   ],
-  "issurances": [
+  "insurances": [
     {
       "cardNumber": "3657415895",
       "name": "Adeslas",
