@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-drawer',
@@ -45,7 +46,7 @@ export class DrawerComponent implements OnDestroy {
 })
 export class DrawerDialogComponent {
 
-  constructor(private usersService: UsersService, private router: Router){}
+  constructor(private usersService: UsersService, private router: Router, private snackBar: MatSnackBar){}
   users: User[];
   doctors: User[];
 
@@ -63,6 +64,13 @@ export class DrawerDialogComponent {
             window.location.reload();
           });
         },);
+    });
+  }
+
+  openDeletedDoctorsSnackBar() {
+    this.snackBar.open("Médicos eliminados correctamente!", "", {
+      duration: 4000,
+      panelClass: ['snackbar']
     });
   }
 }

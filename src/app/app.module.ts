@@ -28,6 +28,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatTreeModule } from "@angular/material/tree"; 
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { MatTreeModule } from "@angular/material/tree";
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    MatTreeModule
+    MatTreeModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from "src/app/services/users.service";
 import { User } from "src/app/models/user.model";
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-users-details',
@@ -49,12 +50,19 @@ export class UsersDetailsComponent implements OnInit {
   templateUrl: 'confirmation.html',
 })
 export class UsersDetailsDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private usersService: UsersService, private router: Router){}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private usersService: UsersService, private router: Router, private snackBar: MatSnackBar){}
 
   deleteUser(_id: string){
     
     this.usersService.deleteUser(_id).subscribe(() => {
       this.router.navigate(['users']);
+    });
+  }
+
+  openDeletedSnackBar() {
+    this.snackBar.open("Usuario eliminado correctamente!", "", {
+      duration: 4000,
+      panelClass: ['snackbar']
     });
   }
 }

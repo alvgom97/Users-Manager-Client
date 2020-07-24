@@ -132,10 +132,10 @@
             <button mat-fab color="primary" routerLink='/users'>
                 <mat-icon>keyboard_arrow_left</mat-icon>
             </button>
-            <button mat-fab color="primary" (click)=openDialog(user?._id)>
+            <button mat-fab color="primary" (click)="openDialog(user?._id)">
                 <mat-icon>delete_forever</mat-icon>
             </button>
-            <button mat-fab (click)="submit()" color="primary" [disabled]="!profileForm.valid">
+            <button mat-fab (click)="submit(); openEditedSnackBar()" color="primary" [disabled]="!profileForm.valid">
                 <mat-icon>send</mat-icon>
             </button>
         </div>
@@ -256,7 +256,7 @@
             <button mat-fab color="primary" (click)=openDialog(user?._id)>
                 <mat-icon>delete_forever</mat-icon>
             </button>
-            <button mat-fab (click)="submitProf()" color="primary" [disabled]="!profileFormProf.valid">
+            <button mat-fab (click)="submitProf(); openEditedSnackBar()" color="primary" [disabled]="!profileFormProf.valid">
                 <mat-icon>send</mat-icon>
             </button>
         </div>

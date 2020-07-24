@@ -5,6 +5,7 @@ import { User, Address, Insurance } from 'src/app/models/user.model';
 import { Subscription } from 'rxjs';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-users-edit',
@@ -55,7 +56,7 @@ export class UsersEditComponent implements OnInit {
   insuranceListProf = new FormControl;
 
 
-  constructor(private route: ActivatedRoute, private usersService: UsersService, private router: Router, public dialog: MatDialog) {
+  constructor(private route: ActivatedRoute, private usersService: UsersService, private router: Router, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.usersService.getInsurances().subscribe(insurances => this.insurances = insurances); 
    }
 
@@ -225,6 +226,13 @@ export class UsersEditComponent implements OnInit {
     dialogRef.afterClosed().subscribe();
   }
 
+  openEditedSnackBar() {
+    this.snackBar.open("Usuario editado correctamente!", "", {
+      duration: 4000,
+      panelClass: ['snackbar']
+    });
+  }
+
 }
 
 @Component({
@@ -232,12 +240,19 @@ export class UsersEditComponent implements OnInit {
   templateUrl: 'confirmation.html',
 })
 export class UsersEditDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private usersService: UsersService, private router: Router){}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private usersService: UsersService, private router: Router, private snackBar: MatSnackBar){}
 
   deleteUser(_id: string){
     
     this.usersService.deleteUser(_id).subscribe(() => {
       this.router.navigate(['users']);
+    });
+  }
+
+  openDeletedSnackBar() {
+    this.snackBar.open("Usuario eliminado correctamente!", "", {
+      duration: 4000,
+      panelClass: ['snackbar']
     });
   }
 }

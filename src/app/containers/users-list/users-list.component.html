@@ -22,7 +22,7 @@
         <div routerLink='{{user?._id}}/edit' class="option"><mat-icon>edit</mat-icon>&nbsp;&nbsp;Editar</div>
     </mat-list-item>
     <mat-list-item>
-        <div class="option" (click)="openDialog(user?._id)"><mat-icon>delete_forever</mat-icon>&nbsp;&nbsp;Eliminar</div>
+        <div class="option" (click)="openDialog(user?._id); openDeletedSnackBar()"><mat-icon>delete_forever</mat-icon>&nbsp;&nbsp;Eliminar</div>
     </mat-list-item>
     
   </mat-expansion-panel>

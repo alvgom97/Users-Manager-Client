@@ -4,6 +4,7 @@ import { Insurance } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 import { User, Address } from "src/app/models/user.model";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-users-create',
@@ -12,7 +13,7 @@ import { User, Address } from "src/app/models/user.model";
 })
 export class UsersCreateComponent implements OnInit {
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router, private snackBar: MatSnackBar) { }
   panelOpenState: boolean;
   selectedValue: string;
 
@@ -138,6 +139,7 @@ export class UsersCreateComponent implements OnInit {
       insuranceList: this.profileForm.value.insuranceList
     };
 
+    this.openCreatedSnackBar();
     this.usersService.createUser(user).subscribe(() => this.router.navigate(['users']));
   
   }
@@ -164,7 +166,16 @@ export class UsersCreateComponent implements OnInit {
       professionalType: this.profileFormProf.value.professionalType
     };
 
+    this.openCreatedSnackBar();
     this.usersService.createUser(user).subscribe(() => this.router.navigate(['users']));
   }
+
+  openCreatedSnackBar() {
+    this.snackBar.open("Usuario creado correctamente!", "", {
+      duration: 4000,
+      panelClass: ['snackbar']
+    });
+  }
+
 
 }
