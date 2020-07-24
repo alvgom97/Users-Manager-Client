@@ -1,7 +1,7 @@
 <h2 id="title">Editar Usuario</h2>
 
 <div *ngIf="!user?.medicalBoardNumber">
-    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="profileForm">
         <mat-accordion>
 
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -135,7 +135,7 @@
             <button mat-fab color="primary" (click)=openDialog(user?._id)>
                 <mat-icon>delete_forever</mat-icon>
             </button>
-            <button mat-fab type="submit" color="primary" [disabled]="!profileForm.valid">
+            <button mat-fab (click)="submit()" color="primary" [disabled]="!profileForm.valid">
                 <mat-icon>send</mat-icon>
             </button>
         </div>
@@ -144,7 +144,7 @@
 </div>
 
 <div *ngIf="user?.medicalBoardNumber">
-    <form [formGroup]="profileFormProf" (ngSubmit)="onSubmitProf()">
+    <form [formGroup]="profileFormProf">
         <mat-accordion>
 
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -256,7 +256,7 @@
             <button mat-fab color="primary" (click)=openDialog(user?._id)>
                 <mat-icon>delete_forever</mat-icon>
             </button>
-            <button mat-fab type="submit" color="primary" [disabled]="!profileFormProf.valid">
+            <button mat-fab (click)="submitProf()" color="primary" [disabled]="!profileFormProf.valid">
                 <mat-icon>send</mat-icon>
             </button>
         </div>

@@ -165,7 +165,7 @@ export class UsersEditComponent implements OnInit {
     return error;
   }
 
-  onSubmit() { 
+  submit() { 
     
     let address: Address = {
       street: this.profileForm.value.street,
@@ -190,7 +190,7 @@ export class UsersEditComponent implements OnInit {
     this.usersService.updateUser(user).subscribe(() => this.router.navigate(['users']));
   }
 
-  onSubmitProf() {
+  submitProf() {
     
     const address: Address = {
       street: this.profileFormProf.value.streetProf,
