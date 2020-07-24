@@ -175,7 +175,7 @@ export class UsersEditComponent implements OnInit {
       city: this.profileForm.value.city,
     };
 
-    let user: User = {
+    const user: User = {
       _id: this.user._id,
       nhc: this.profileForm.value.nhc,
       firstName: this.profileForm.value.firstName,
@@ -184,16 +184,15 @@ export class UsersEditComponent implements OnInit {
       gender: this.profileForm.value.gender,
       birthdate: this.profileForm.value.birthdate,
       identityNumber: this.profileForm.value.identityNumber,
-      address: address,
+      address,
       insuranceList: this.profileForm.value.insuranceList
     };
-    console.log(user);
     this.usersService.updateUser(user).subscribe(() => this.router.navigate(['users']));
   }
 
   onSubmitProf() {
     
-    let address: Address = {
+    const address: Address = {
       street: this.profileFormProf.value.streetProf,
       number: this.profileFormProf.value.numberProf,
       door: this.profileFormProf.value.doorProf,
@@ -201,7 +200,7 @@ export class UsersEditComponent implements OnInit {
       city: this.profileFormProf.value.cityProf,
     };
 
-    let user: User = {
+    const user: User = {
       _id: this.user._id,
       medicalBoardNumber: this.profileFormProf.value.medicalBoardNumber,
       firstName: this.profileFormProf.value.firstNameProf,
@@ -210,7 +209,7 @@ export class UsersEditComponent implements OnInit {
       gender: this.profileFormProf.value.genderProf,
       birthdate: this.profileFormProf.value.birthdateProf,
       identityNumber: this.profileFormProf.value.identityNumberProf,
-      address: address,
+      address,
       professionalType: this.profileFormProf.value.professionalType
     };
 
@@ -220,7 +219,7 @@ export class UsersEditComponent implements OnInit {
 
   openDialog(_id: number): void {
     const dialogRef = this.dialog.open(UsersEditDialogComponent, {
-      data: { _id: _id },
+      data: { _id },
     });
     
     dialogRef.afterClosed().subscribe();

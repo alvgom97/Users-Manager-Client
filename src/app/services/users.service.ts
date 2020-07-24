@@ -26,7 +26,7 @@ export class UsersService {
   }
 
   deleteUser(_id: string): Observable<object> {
-    return this.httpClient.delete<object>(this.API_BASE_URL + '/users' + _id);
+    return this.httpClient.delete<object>(this.API_BASE_URL + '/users/' + _id);
   }
 
   updateUser(user: User) {
