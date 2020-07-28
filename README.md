@@ -1,13 +1,20 @@
-# Álvaro Gomez's Project
+## Requirements
 
-## Deployment
+- Install [nodejs](https://nodejs.org/es/download) (You may need to restart afterwards)
 
-- Currently the database is stored in a json file served by "json-server".
+- Install Angular
+```
+npm i -g @angular/cli
+```
+- [User Management Server](https://github.com/alvgom97/Users-Manager-Server)
 
-## Technologies used
+## Initialize
 
-- HTML5, CSS3 (SASS), JavaScript, TypeScript (Angular, Material).
-
-## Features
-
-- Fully responsive.
+- Install the project
+```
+npm i 
+```
+- Start project, click [here](https://localhost:4200)
+```
+ng serve 
+```
