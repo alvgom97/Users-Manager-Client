@@ -27,33 +27,33 @@ export class UsersCreateComponent implements OnInit {
     this.usersService.getInsurances().subscribe(insurances => this.insurances = insurances); 
   }
 
-  firstName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-  lastName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-  secondLastName = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)]);
+  firstName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
+  lastName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
+  secondLastName = new FormControl('', [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
   identityNumber = new FormControl('', [Validators.pattern(/^\d{8}[a-zA-Z]$/)]);
   nhc = new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]);
   medicalBoardNumber = new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]);
   birthdate = new FormControl('', [Validators.pattern(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/)]);
   gender = new FormControl();
 
-  street = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)]);
+  street = new FormControl('', [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
   number = new FormControl('', [Validators.pattern(/^\d*$/)]);
   door = new FormControl('', [Validators.minLength(1), Validators.maxLength(20)]);
   postalCode = new FormControl('', [Validators.pattern(/^\d{5}$/)]);
-  city = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)]);
+  city = new FormControl('', [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
 
-  firstNameProf = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-  lastNameProf = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-  secondLastNameProf = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)]);
+  firstNameProf = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
+  lastNameProf = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
+  secondLastNameProf = new FormControl('', [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
   identityNumberProf = new FormControl('', [Validators.pattern(/^\d{8}[a-zA-Z]$/)]);
   birthdateProf = new FormControl('', [Validators.pattern(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/)]);
   genderProf = new FormControl();
 
-  streetProf = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)]);
+  streetProf = new FormControl('', [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
   numberProf = new FormControl('', [Validators.pattern(/^\d*$/)]);
   doorProf = new FormControl('', [Validators.minLength(1), Validators.maxLength(20)]);
   postalCodeProf = new FormControl('', [Validators.pattern(/^\d{5}$/)]);
-  cityProf = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)]);
+  cityProf = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)], Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u));
   professionalType = new FormControl();
 
   insuranceList = new FormControl();

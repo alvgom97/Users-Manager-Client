@@ -68,33 +68,33 @@ export class UsersEditComponent implements OnInit {
         .subscribe(user => {
           this.user = user;
 
-          this.firstName = new FormControl(this.user.firstName, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-          this.lastName = new FormControl(this.user.lastName, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-          this.secondLastName = new FormControl(this.user.secondLastName, [Validators.minLength(3), Validators.maxLength(20)]);
+          this.firstName = new FormControl(this.user.firstName, [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
+          this.lastName = new FormControl(this.user.lastName, [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
+          this.secondLastName = new FormControl(this.user.secondLastName, [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
           this.identityNumber = new FormControl(this.user.identityNumber, [Validators.pattern(/^\d{8}[a-zA-Z]$/)]);
           this.gender = new FormControl(this.user.gender);
           this.birthdate = new FormControl(this.user.birthdate, [Validators.pattern(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/)]);
           this.nhc = new FormControl(this.user.nhc, [Validators.required, Validators.pattern(/^\d{10}$/)]);
-          this.street = new FormControl(this.user.address.street, [Validators.minLength(3), Validators.maxLength(20)]);
+          this.street = new FormControl(this.user.address.street, [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
           this.number = new FormControl(this.user.address.number, [Validators.pattern(/^\d*$/)]);
           this.door = new FormControl(this.user.address.door, [Validators.minLength(1), Validators.maxLength(20)]);
           this.postalCode = new FormControl(this.user.address.postalCode, [Validators.pattern(/^\d{5}$/)]);
-          this.city = new FormControl(this.user.address.city, [Validators.minLength(3), Validators.maxLength(20)]);
+          this.city = new FormControl(this.user.address.city, [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
           this.medicalBoardNumber = new FormControl(this.user.medicalBoardNumber, [Validators.required, Validators.pattern(/^\d{10}$/)]);
           this.professionalType = new FormControl(this.user.professionalType);
           this.insuranceList = new FormControl(this.user.insuranceList);
 
-          this.firstNameProf = new FormControl(this.user.firstName, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-          this.lastNameProf = new FormControl(this.user.lastName, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
-          this.secondLastNameProf = new FormControl(this.user.secondLastName, [Validators.minLength(3), Validators.maxLength(20)]);
+          this.firstNameProf = new FormControl(this.user.firstName, [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
+          this.lastNameProf = new FormControl(this.user.lastName, [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
+          this.secondLastNameProf = new FormControl(this.user.secondLastName, [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
           this.identityNumberProf = new FormControl(this.user.identityNumber, [Validators.pattern(/^\d{8}[a-zA-Z]$/)]);
           this.genderProf = new FormControl(this.user.gender);
           this.birthdateProf = new FormControl(this.user.birthdate, [Validators.pattern(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/)]);
-          this.streetProf = new FormControl(this.user.address.street, [Validators.minLength(3), Validators.maxLength(20)]);
+          this.streetProf = new FormControl(this.user.address.street, [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
           this.numberProf = new FormControl(this.user.address.number, [Validators.pattern(/^\d*$/)]);
           this.doorProf = new FormControl(this.user.address.door, [Validators.minLength(1), Validators.maxLength(20)]);
           this.postalCodeProf = new FormControl(this.user.address.postalCode, [Validators.pattern(/^\d{5}$/)]);
-          this.cityProf = new FormControl(this.user.address.city, [Validators.minLength(3), Validators.maxLength(20)]);
+          this.cityProf = new FormControl(this.user.address.city, [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
 
           this.profileForm = new FormGroup({
 
