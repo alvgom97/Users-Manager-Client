@@ -13,14 +13,14 @@ mat-expansion-panel mat-expansion-panel {
 mat-panel-title {
 
   @media (max-width: "480px") {
-      font-size: 80%;
+      font-size: 90%;
   }
 }
 
 .mat-list-item {
 
   @media (max-width: "480px") {
-      font-size: 80%;
+      font-size: 90%;
       height: fit-content;
   }
   
