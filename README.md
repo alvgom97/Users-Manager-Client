@@ -18,6 +18,7 @@ npm i
 ```
 ng serve 
 ```
+- Deployed with Github Pages [here](https://alvgom97.github.io/Users-Manager-Client)
 
 ## User Guide 🕹️
 
