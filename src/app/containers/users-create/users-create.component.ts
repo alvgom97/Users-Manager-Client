@@ -53,7 +53,7 @@ export class UsersCreateComponent implements OnInit {
   numberProf = new FormControl('', [Validators.pattern(/^\d*$/)]);
   doorProf = new FormControl('', [Validators.minLength(1), Validators.maxLength(20)]);
   postalCodeProf = new FormControl('', [Validators.pattern(/^\d{5}$/)]);
-  cityProf = new FormControl('', [Validators.minLength(3), Validators.maxLength(20)], Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u));
+  cityProf = new FormControl('', [Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]);
   professionalType = new FormControl();
 
   insuranceList = new FormControl();

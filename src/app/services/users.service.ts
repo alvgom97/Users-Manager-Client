@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UsersService {
 
-  API_BASE_URL = 'http://localhost:3000';
+  API_BASE_URL = 'https://users-manager.herokuapp.com';
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
